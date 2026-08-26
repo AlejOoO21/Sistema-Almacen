@@ -1,0 +1,6 @@
+target/
+nbproject/private/
+.gradle/
+.settings/
+.classpath
+.project
