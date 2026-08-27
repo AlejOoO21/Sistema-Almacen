@@ -1,19 +1,22 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package vistas;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
+import DAO.UsuarioDAO;
+import vistas.vistaPrincipal;
+
 public class Loggin extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Loggin
-     */
     public Loggin() {
         initComponents();
-        LocalDate fechaActual = LocalDate.now();
+    
+    this.setLocationRelativeTo(null); // Centra la ventana
+    
+    // Al presionar ENTER en cualquier campo, ejecutará el evento de jButtonAceptarLoggin
+    this.getRootPane().setDefaultButton(jButtonAceptarLoggin);
+    
+    LocalDate fechaActual = LocalDate.now();
     
     // 2. Definir el formato (Día/Mes/Año)
     DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -24,8 +27,32 @@ public class Loggin extends javax.swing.JFrame {
     // 4. Asignar el año actual al campo txtPeriodo
     jTextFieldPeriodo.setText(String.valueOf(fechaActual.getYear()));
     }
+    
+    private void validarYEntrar() {
+    String usuario = jTextFielUsuario.getText().trim();
+    String password = new String(jPasswordField.getPassword());
 
+    if (usuario.isEmpty() || password.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Por favor complete todos los campos.", "Campos Vacíos", JOptionPane.WARNING_MESSAGE);
+        return;
+    }
 
+    UsuarioDAO dao = new UsuarioDAO();
+    boolean esValido = dao.validarUsuario(usuario, password);
+
+    if (esValido) {
+        // Ingreso directo a la ventana principal
+        vistaPrincipal principal = new vistaPrincipal();
+        principal.setVisible(true);
+        principal.setLocationRelativeTo(null);
+        this.dispose(); 
+    } else {
+        // Alerta visible únicamente si falla la autenticación
+        JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos.", "Error de Autenticación", JOptionPane.ERROR_MESSAGE);
+        jPasswordField.setText("");
+        jPasswordField.requestFocus();
+    }
+}
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -210,6 +237,7 @@ public class Loggin extends javax.swing.JFrame {
 
     private void jButtonAceptarLogginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarLogginActionPerformed
         // TODO add your handling code here:
+        validarYEntrar();
     }//GEN-LAST:event_jButtonAceptarLogginActionPerformed
 
     private void jButtonCancelarLogginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarLogginActionPerformed
