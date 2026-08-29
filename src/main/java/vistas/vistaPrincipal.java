@@ -4,10 +4,7 @@
  */
 package vistas;
 
-/**
- *
- * @author GHOST
- */
+//COMENTARIO DE RODRIGO
 public class vistaPrincipal extends javax.swing.JFrame {
 
     /**
