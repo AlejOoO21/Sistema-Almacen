@@ -21,5 +21,10 @@
             <artifactId>mysql-connector-j</artifactId>
             <version>8.3.0</version> <!-- versión reciente que prefieras -->
         </dependency>
+        <dependency>
+            <groupId>org.netbeans.external</groupId>
+            <artifactId>AbsoluteLayout</artifactId>
+            <version>RELEASE190</version>
+        </dependency>
     </dependencies>
 </project>
