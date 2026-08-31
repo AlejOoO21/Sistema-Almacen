@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 import DAO.UsuarioDAO;
-import vistas.vistaPrincipal;
 
 public class Loggin extends javax.swing.JFrame {
 
@@ -229,10 +228,12 @@ public class Loggin extends javax.swing.JFrame {
 
     private void jTextFielUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFielUsuarioActionPerformed
         // TODO add your handling code here:
+        jPasswordField.requestFocus();
     }//GEN-LAST:event_jTextFielUsuarioActionPerformed
 
     private void jPasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordFieldActionPerformed
         // TODO add your handling code here:
+        validarYEntrar();
     }//GEN-LAST:event_jPasswordFieldActionPerformed
 
     private void jButtonAceptarLogginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarLogginActionPerformed
@@ -242,6 +243,7 @@ public class Loggin extends javax.swing.JFrame {
 
     private void jButtonCancelarLogginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarLogginActionPerformed
         // TODO add your handling code here:
+        System.exit(0);
     }//GEN-LAST:event_jButtonCancelarLogginActionPerformed
 
     /**
