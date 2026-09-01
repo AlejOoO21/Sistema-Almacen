@@ -1,12 +1,26 @@
 package vistas;
 
 public class vistaPrincipal extends javax.swing.JFrame {
-
   
     public vistaPrincipal() {
+        
         initComponents();
-         this.setLocationRelativeTo(null); // Centra la ventana
+        // 1. Quitar límites de tamaño para que tome el 100% de la resolución del monitor
+        FONDO.setPreferredSize(null);
+        FONDO.setMinimumSize(null);
+
+        // 2. Hacer visible la ventana antes de aplicar el maximizado real
+        this.setVisible(true);
+
+        // 3. Maximizar dinámicamente a pantalla completa respetando la barra de Windows
+        this.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+
+        // 4. Centrar y rediseñar los paneles internos
+        this.setLocationRelativeTo(null);
+        this.revalidate();
+        this.repaint();
     }
+        
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -32,6 +46,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
+        jDesktopPanePantallas = new javax.swing.JDesktopPane();
         Menu = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
@@ -141,13 +156,14 @@ public class vistaPrincipal extends javax.swing.JFrame {
         jMenu11 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(0, 0));
+        setExtendedState(MAXIMIZED_BOTH);
 
         FONDO.setBackground(new java.awt.Color(212, 227, 238));
+        FONDO.setPreferredSize(null);
         FONDO.setLayout(new java.awt.BorderLayout());
 
         jPanel5.setOpaque(false);
-        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 0));
 
         jButton10.setText("jButton10");
         jButton10.addActionListener(new java.awt.event.ActionListener() {
@@ -155,36 +171,36 @@ public class vistaPrincipal extends javax.swing.JFrame {
                 jButton10ActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 0, -1, -1));
+        jPanel5.add(jButton10);
 
         jButton11.setText("jButton11");
-        jPanel5.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jPanel5.add(jButton11);
 
         jButton12.setText("jButton12");
-        jPanel5.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, -1, -1));
+        jPanel5.add(jButton12);
 
         jButton13.setText("jButton13");
-        jPanel5.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, -1, -1));
+        jPanel5.add(jButton13);
 
         jButton14.setText("jButton14");
-        jPanel5.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, -1, -1));
+        jPanel5.add(jButton14);
 
         jButton17.setText("jButton17");
-        jPanel5.add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 0, -1, -1));
+        jPanel5.add(jButton17);
 
         jButton16.setText("jButton16");
-        jPanel5.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 0, -1, -1));
+        jPanel5.add(jButton16);
 
         jButton15.setText("jButton15");
-        jPanel5.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, -1, -1));
+        jPanel5.add(jButton15);
 
         jButton2.setText("jButton2");
-        jPanel5.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 0, -1, -1));
+        jPanel5.add(jButton2);
 
         FONDO.add(jPanel5, java.awt.BorderLayout.PAGE_START);
 
         jPanel2.setBackground(new java.awt.Color(42, 59, 80));
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.setAlignmentX(0.0F);
 
         jButton1.setText("jButton1");
 
@@ -242,6 +258,19 @@ public class vistaPrincipal extends javax.swing.JFrame {
         );
 
         FONDO.add(jPanel2, java.awt.BorderLayout.LINE_START);
+
+        javax.swing.GroupLayout jDesktopPanePantallasLayout = new javax.swing.GroupLayout(jDesktopPanePantallas);
+        jDesktopPanePantallas.setLayout(jDesktopPanePantallasLayout);
+        jDesktopPanePantallasLayout.setHorizontalGroup(
+            jDesktopPanePantallasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1226, Short.MAX_VALUE)
+        );
+        jDesktopPanePantallasLayout.setVerticalGroup(
+            jDesktopPanePantallasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 832, Short.MAX_VALUE)
+        );
+
+        FONDO.add(jDesktopPanePantallas, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(FONDO, java.awt.BorderLayout.CENTER);
 
@@ -819,6 +848,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
+    private javax.swing.JDesktopPane jDesktopPanePantallas;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu11;
