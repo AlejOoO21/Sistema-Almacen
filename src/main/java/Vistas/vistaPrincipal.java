@@ -20,6 +20,8 @@ public class vistaPrincipal extends javax.swing.JFrame {
     public vistaPrincipal() {
         
         initComponents();
+        
+        
         // 1. Quitar límites de tamaño para que tome el 100% de la resolución del monitor
         FONDO.setPreferredSize(null);
         FONDO.setMinimumSize(null);
@@ -61,7 +63,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
-        jDesktopPanePantallas = new javax.swing.JDesktopPane();
+        jDesktopPanePantallas = new Vistas.DesktopConFondo();
         Menu = new javax.swing.JMenuBar();
         jMenuArchiovos = new javax.swing.JMenu();
         jRadioButtonMenuItemAlmacenes = new javax.swing.JRadioButtonMenuItem();
