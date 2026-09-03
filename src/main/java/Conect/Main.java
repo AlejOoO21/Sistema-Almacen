@@ -1,10 +1,20 @@
 package Conect;
 
-import Conect.conexion;
+import Vistas.vistaPrincipal; // Importamos la ventana principal
 
 public class Main {
+
     public static void main(String[] args) {
-        // Llamamos a tu clase de conexión para probar si se conecta a Workbench
+        // 1. Probar la conexión a la base de datos
         conexion.getconectar();
+
+        // 2. Ejecutar y mostrar la interfaz gráfica en el hilo de Swing
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                vistaPrincipal principal = new vistaPrincipal();
+                principal.setVisible(true); // Se muestra en pantalla completa
+            }
+        });
     }
 }
