@@ -29,29 +29,30 @@ public class Loggin extends javax.swing.JFrame {
     }
     
     private void validarYEntrar() {
-    String usuario = jTextFielUsuario.getText().trim();
-    String password = new String(jPasswordField.getPassword());
+        String usuario = jTextFielUsuario.getText().trim();
+        String password = new String(jPasswordField.getPassword());
 
-    if (usuario.isEmpty() || password.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Por favor complete todos los campos.", "Campos Vacíos", JOptionPane.WARNING_MESSAGE);
-        return;
-    }
+        // Asumiendo que tienes un campo o label de fecha en tu Loggin, por ejemplo: jTextFielFecha
+        String fecha = jTextFielFecha.getText().trim(); 
 
-    UsuarioDAO dao = new UsuarioDAO();
-    boolean esValido = dao.validarUsuario(usuario, password);
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
 
-    if (esValido) {
-        // Ingreso directo a la ventana principal
-        vistaPrincipal principal = new vistaPrincipal();
-        principal.setVisible(true);
-        principal.setLocationRelativeTo(null);
-        this.dispose(); 
-    } else {
-        // Alerta visible únicamente si falla la autenticación
-        JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos.", "Error de Autenticación", JOptionPane.ERROR_MESSAGE);
-        jPasswordField.setText("");
-        jPasswordField.requestFocus();
-    }
+        if (usuarioDAO.validarUsuario(usuario, password)) {
+            // 1. Guardar las credenciales/fecha en la Sesión Global
+            Conect.Sesion.usuarioActivo = usuario;
+            Conect.Sesion.fechaActiva = fecha;
+
+            // 2. Abrir la vista principal
+            vistaPrincipal principal = new vistaPrincipal();
+            principal.setVisible(true);
+
+            // 3. Cerrar el login
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos.", "Error de Autenticación", JOptionPane.ERROR_MESSAGE);
+            jPasswordField.setText("");
+            jPasswordField.requestFocus();
+        }
 }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

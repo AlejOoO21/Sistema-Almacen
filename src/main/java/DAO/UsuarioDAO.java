@@ -12,7 +12,7 @@ public class UsuarioDAO {
         // Asegúrate de cambiar 'usuarios', 'nom_user' y 'clave' por los nombres reales de tu BD
         String sql = "SELECT * FROM tbusuarios WHERE nomUsuarios = ? AND pwdUsuarios = ?";
         
-        try (Connection cn = conexion.getconectar(); // Método de tu clase conexion.java
+        try (Connection cn = conexion.conectar(); // Método de tu clase conexion.java
              PreparedStatement pst = cn.prepareStatement(sql)) {
             
             pst.setString(1, usuario);
