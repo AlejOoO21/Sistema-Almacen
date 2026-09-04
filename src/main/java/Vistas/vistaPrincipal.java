@@ -2,12 +2,19 @@ package Vistas;
 
 import Vistas.InternalArchivo.InternalArchivoAlmacenes;
 import Vistas.InternalArchivo.InternalCierreValorización;
+import Vistas.InternalArchivo.InternalCliente;
+import Vistas.InternalArchivo.InternalGalga;
 import Vistas.InternalArchivo.InternalLineasFamilias;
+import Vistas.InternalArchivo.InternalMaquina;
 import Vistas.InternalArchivo.InternalMuestras;
 import Vistas.InternalArchivo.InternalProductos;
+import Vistas.InternalArchivo.InternalProveedor;
 import Vistas.InternalArchivo.InternalTecnica;
 import Vistas.InternalArchivo.InternalTipoProduc;
 import Vistas.InternalArchivo.InternalTipoServicios;
+import Vistas.InternalArchivo.InternalTipodeCambio;
+import Vistas.InternalArchivo.InternalTransportista;
+import Vistas.InternalArchivo.InternalUsuarios;
 import java.util.LinkedList;
 import javax.swing.JInternalFrame;
 import javax.swing.JMenuItem;
@@ -20,28 +27,69 @@ public class vistaPrincipal extends javax.swing.JFrame {
     
     public vistaPrincipal() {   
         initComponents();
-        // 1. Quitar límites de tamaño
+
+        // 1. Quitar límites de tamaño en FONDO y limpiar el panel lateral
         FONDO.setPreferredSize(null);
         FONDO.setMinimumSize(null);
+        jPanel2.removeAll();
 
-        // 2. Definir el estado maximizado ANTES de hacer visible la ventana
-        this.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+        // 2. Arreglo con las variables de tus botones
+        javax.swing.JButton[] botones = {
+            jButton17, jButton18, jButton19, jButton20, 
+            jButton21, jButton22, jButton23, jButton24
+        };
 
-        // 3. Renderizar y actualizar el diseño de los paneles
+        // Estilo visual de los botones
+        for (javax.swing.JButton btn : botones) {
+            btn.setPreferredSize(new java.awt.Dimension(90, 90));
+            btn.setFocusPainted(false);
+            btn.setContentAreaFilled(true);
+            btn.setBackground(java.awt.Color.WHITE);
+            btn.setBorder(javax.swing.BorderFactory.createCompoundBorder(
+                javax.swing.BorderFactory.createLineBorder(new java.awt.Color(180, 190, 210), 1),
+                javax.swing.BorderFactory.createEmptyBorder(2, 2, 2, 2)
+            ));
+        }
+
+        // 3. Configurar GridBagLayout en jPanel2
+        jPanel2.setLayout(new java.awt.GridBagLayout());
+        java.awt.GridBagConstraints gbc = new java.awt.GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = java.awt.GridBagConstraints.RELATIVE;
+        gbc.anchor = java.awt.GridBagConstraints.NORTH;
+        gbc.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gbc.weightx = 1.0;
+        gbc.weighty = 0.0;
+        gbc.insets = new java.awt.Insets(4, 6, 4, 6);
+
+        // Agregar los botones de forma limpia
+        for (javax.swing.JButton btn : botones) {
+            jPanel2.add(btn, gbc);
+        }
+
+        // 4. Componente invisible al final para empujar todo hacia arriba
+        gbc.weighty = 1.0;
+        gbc.fill = java.awt.GridBagConstraints.VERTICAL;
+        jPanel2.add(new javax.swing.JLabel(), gbc);
+
+        // Reconstruir y actualizar vistas
+        jPanel2.revalidate();
+        jPanel2.repaint();
         this.revalidate();
         this.repaint();
-        }
-        
+    }      
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         FONDO = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        jButton17 = new javax.swing.JButton();
         jButton18 = new javax.swing.JButton();
         jButton19 = new javax.swing.JButton();
         jButton20 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jButton21 = new javax.swing.JButton();
         jButton22 = new javax.swing.JButton();
         jButton23 = new javax.swing.JButton();
@@ -171,34 +219,119 @@ public class vistaPrincipal extends javax.swing.JFrame {
         FONDO.setPreferredSize(null);
         FONDO.setLayout(new java.awt.BorderLayout());
 
-        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setAlignmentX(0.0F);
-        jPanel2.setPreferredSize(new java.awt.Dimension(125, 500));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel2.setPreferredSize(new java.awt.Dimension(125, 400));
 
-        jButton1.setText("jButton1");
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 113, 97));
+        jButton17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Atajos.png"))); // NOI18N
+        jButton17.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton17.setMaximumSize(new java.awt.Dimension(90, 90));
+        jButton17.setMinimumSize(new java.awt.Dimension(90, 90));
+        jButton17.setPreferredSize(new java.awt.Dimension(90, 90));
 
-        jButton18.setText("jButton1");
-        jPanel2.add(jButton18, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 109, 113, 97));
+        jButton18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/EntreArticulos.png"))); // NOI18N
+        jButton18.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton18.setMaximumSize(new java.awt.Dimension(90, 90));
+        jButton18.setMinimumSize(new java.awt.Dimension(90, 90));
+        jButton18.setPreferredSize(new java.awt.Dimension(90, 90));
 
-        jButton19.setText("jButton1");
-        jPanel2.add(jButton19, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 212, 113, 97));
+        jButton19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Provedores.png"))); // NOI18N
+        jButton19.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton19.setMaximumSize(new java.awt.Dimension(90, 90));
+        jButton19.setMinimumSize(new java.awt.Dimension(90, 90));
+        jButton19.setPreferredSize(new java.awt.Dimension(90, 90));
 
-        jButton20.setText("jButton1");
-        jPanel2.add(jButton20, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 315, 113, 97));
+        jButton20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/OrdenesCompra.png"))); // NOI18N
+        jButton20.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton20.setMaximumSize(new java.awt.Dimension(90, 90));
+        jButton20.setMinimumSize(new java.awt.Dimension(90, 90));
+        jButton20.setPreferredSize(new java.awt.Dimension(90, 90));
 
-        jButton21.setText("jButton1");
-        jPanel2.add(jButton21, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 418, 113, 97));
+        jButton21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ConsultaKardex.png"))); // NOI18N
+        jButton21.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton21.setMaximumSize(new java.awt.Dimension(90, 90));
+        jButton21.setMinimumSize(new java.awt.Dimension(90, 90));
+        jButton21.setPreferredSize(new java.awt.Dimension(90, 90));
+        jButton21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton21ActionPerformed(evt);
+            }
+        });
 
-        jButton22.setText("jButton1");
-        jPanel2.add(jButton22, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 521, 113, 97));
+        jButton22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Guardar Archivo.png"))); // NOI18N
+        jButton22.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton22.setMaximumSize(new java.awt.Dimension(90, 90));
+        jButton22.setMinimumSize(new java.awt.Dimension(90, 90));
+        jButton22.setPreferredSize(new java.awt.Dimension(90, 90));
 
-        jButton23.setText("jButton1");
-        jPanel2.add(jButton23, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 624, 113, 97));
+        jButton23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Exportar Archivos.png"))); // NOI18N
+        jButton23.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton23.setMaximumSize(new java.awt.Dimension(90, 90));
+        jButton23.setMinimumSize(new java.awt.Dimension(90, 90));
+        jButton23.setPreferredSize(new java.awt.Dimension(90, 90));
 
-        jButton24.setText("jButton1");
-        jPanel2.add(jButton24, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 727, 113, 97));
+        jButton24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Transferencias de Reportes.png"))); // NOI18N
+        jButton24.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton24.setMaximumSize(new java.awt.Dimension(90, 90));
+        jButton24.setMinimumSize(new java.awt.Dimension(90, 90));
+        jButton24.setPreferredSize(new java.awt.Dimension(90, 90));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(4, 4, 4)
+                                .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton18, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton19, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton20, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton22, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton23, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton24, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
         FONDO.add(jPanel2, java.awt.BorderLayout.LINE_START);
 
@@ -210,7 +343,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
         );
         jDesktopPanePantallasLayout.setVerticalGroup(
             jDesktopPanePantallasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 850, Short.MAX_VALUE)
+            .addGap(0, 1580, Short.MAX_VALUE)
         );
 
         FONDO.add(jDesktopPanePantallas, java.awt.BorderLayout.CENTER);
@@ -354,26 +487,51 @@ public class vistaPrincipal extends javax.swing.JFrame {
         jRadioButtonMenuItemMaquina.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItemMaquina.setSelected(true);
         jRadioButtonMenuItemMaquina.setText("Maquina");
+        jRadioButtonMenuItemMaquina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItemMaquinaActionPerformed(evt);
+            }
+        });
         jMenuArchiovos.add(jRadioButtonMenuItemMaquina);
 
         jRadioButtonMenuItemGalga.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItemGalga.setSelected(true);
         jRadioButtonMenuItemGalga.setText("Galga");
+        jRadioButtonMenuItemGalga.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItemGalgaActionPerformed(evt);
+            }
+        });
         jMenuArchiovos.add(jRadioButtonMenuItemGalga);
 
         jRadioButtonMenuItemClientes.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItemClientes.setSelected(true);
         jRadioButtonMenuItemClientes.setText("Cliente");
+        jRadioButtonMenuItemClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItemClientesActionPerformed(evt);
+            }
+        });
         jMenuArchiovos.add(jRadioButtonMenuItemClientes);
 
         jRadioButtonMenuItemProveedores.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItemProveedores.setSelected(true);
         jRadioButtonMenuItemProveedores.setText("Proveedor");
+        jRadioButtonMenuItemProveedores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItemProveedoresActionPerformed(evt);
+            }
+        });
         jMenuArchiovos.add(jRadioButtonMenuItemProveedores);
 
         jRadioButtonMenuItemTransportistas.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItemTransportistas.setSelected(true);
         jRadioButtonMenuItemTransportistas.setText("Transportista");
+        jRadioButtonMenuItemTransportistas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItemTransportistasActionPerformed(evt);
+            }
+        });
         jMenuArchiovos.add(jRadioButtonMenuItemTransportistas);
 
         jMenuContabilidad.setText("Contabilidad");
@@ -387,11 +545,21 @@ public class vistaPrincipal extends javax.swing.JFrame {
         jRadioButtonMenuItemTipoCambio.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItemTipoCambio.setSelected(true);
         jRadioButtonMenuItemTipoCambio.setText("Tipo de Cambio");
+        jRadioButtonMenuItemTipoCambio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItemTipoCambioActionPerformed(evt);
+            }
+        });
         jMenuArchiovos.add(jRadioButtonMenuItemTipoCambio);
 
         jRadioButtonMenuItemUsuarios.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItemUsuarios.setSelected(true);
         jRadioButtonMenuItemUsuarios.setText("Usuarios");
+        jRadioButtonMenuItemUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItemUsuariosActionPerformed(evt);
+            }
+        });
         jMenuArchiovos.add(jRadioButtonMenuItemUsuarios);
 
         jMenuConsumos.setText("Consumos");
@@ -413,16 +581,31 @@ public class vistaPrincipal extends javax.swing.JFrame {
         jRadioButtonMenuItem20.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem20.setSelected(true);
         jRadioButtonMenuItem20.setText("Cerrar");
+        jRadioButtonMenuItem20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem20ActionPerformed(evt);
+            }
+        });
         jMenuArchiovos.add(jRadioButtonMenuItem20);
 
         jRadioButtonMenuItem21.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem21.setSelected(true);
         jRadioButtonMenuItem21.setText("Aceptar");
+        jRadioButtonMenuItem21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem21ActionPerformed(evt);
+            }
+        });
         jMenuArchiovos.add(jRadioButtonMenuItem21);
 
         jRadioButtonMenuItem22.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem22.setSelected(true);
         jRadioButtonMenuItem22.setText("Grabar Como_");
+        jRadioButtonMenuItem22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem22ActionPerformed(evt);
+            }
+        });
         jMenuArchiovos.add(jRadioButtonMenuItem22);
 
         jRadioButtonMenuItem23.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -871,12 +1054,67 @@ public class vistaPrincipal extends javax.swing.JFrame {
         abrirVentana(ventanaTecnica, "Tecnica");                                                                 
     }//GEN-LAST:event_jRadioButtonMenuItemTecnicaActionPerformed
 
+    private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton21ActionPerformed
+
+    private void jRadioButtonMenuItemTransportistasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItemTransportistasActionPerformed
+        // TODO add your handling code here:
+        InternalTransportista ventanaTransportista = new InternalTransportista();
+        abrirVentana(ventanaTransportista, "Transportista");
+    }//GEN-LAST:event_jRadioButtonMenuItemTransportistasActionPerformed
+
+    private void jRadioButtonMenuItemProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItemProveedoresActionPerformed
+        // TODO add your handling code here:
+        InternalProveedor ventanaProveedor = new InternalProveedor();
+        abrirVentana(ventanaProveedor, "Proveedor");
+    }//GEN-LAST:event_jRadioButtonMenuItemProveedoresActionPerformed
+
+    private void jRadioButtonMenuItemMaquinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItemMaquinaActionPerformed
+        // TODO add your handling code here:
+        InternalMaquina ventanaMaquina = new InternalMaquina();
+        abrirVentana(ventanaMaquina, "Maquina");
+    }//GEN-LAST:event_jRadioButtonMenuItemMaquinaActionPerformed
+
+    private void jRadioButtonMenuItemGalgaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItemGalgaActionPerformed
+        // TODO add your handling code here:
+        InternalGalga ventanaGalga = new InternalGalga();
+        abrirVentana(ventanaGalga, "Galga");
+    }//GEN-LAST:event_jRadioButtonMenuItemGalgaActionPerformed
+
+    private void jRadioButtonMenuItemClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItemClientesActionPerformed
+        // TODO add your handling code here:
+        InternalCliente ventanaCliente = new InternalCliente();
+        abrirVentana(ventanaCliente, "Cliente");
+    }//GEN-LAST:event_jRadioButtonMenuItemClientesActionPerformed
+
+    private void jRadioButtonMenuItemTipoCambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItemTipoCambioActionPerformed
+        // TODO add your handling code here:
+        InternalTipodeCambio ventanaTipodeCambio = new InternalTipodeCambio();
+        abrirVentana(ventanaTipodeCambio, "TipodeCambio");
+    }//GEN-LAST:event_jRadioButtonMenuItemTipoCambioActionPerformed
+
+    private void jRadioButtonMenuItemUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItemUsuariosActionPerformed
+        // TODO add your handling code here:
+        InternalUsuarios ventanaUsuarios = new InternalUsuarios();
+        abrirVentana(ventanaUsuarios, "Usuarios");
+    }//GEN-LAST:event_jRadioButtonMenuItemUsuariosActionPerformed
+
+    private void jRadioButtonMenuItem20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem20ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButtonMenuItem20ActionPerformed
+
+    private void jRadioButtonMenuItem21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem21ActionPerformed
+        // TODO add your handling code here:  
+    }//GEN-LAST:event_jRadioButtonMenuItem21ActionPerformed
+
+    private void jRadioButtonMenuItem22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem22ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButtonMenuItem22ActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -950,10 +1188,11 @@ public class vistaPrincipal extends javax.swing.JFrame {
             jMenuVentanas.add(item);
         }
     }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel FONDO;
     private javax.swing.JMenuBar Menu;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton20;
@@ -968,6 +1207,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JDesktopPane jDesktopPanePantallas;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu15;
     private javax.swing.JMenu jMenu16;
     private javax.swing.JMenu jMenu17;
