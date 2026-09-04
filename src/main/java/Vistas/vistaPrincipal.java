@@ -2,12 +2,19 @@ package Vistas;
 
 import Vistas.InternalArchivo.InternalArchivoAlmacenes;
 import Vistas.InternalArchivo.InternalCierreValorización;
+import Vistas.InternalArchivo.InternalCliente;
+import Vistas.InternalArchivo.InternalGalga;
 import Vistas.InternalArchivo.InternalLineasFamilias;
+import Vistas.InternalArchivo.InternalMaquina;
 import Vistas.InternalArchivo.InternalMuestras;
 import Vistas.InternalArchivo.InternalProductos;
+import Vistas.InternalArchivo.InternalProveedor;
 import Vistas.InternalArchivo.InternalTecnica;
 import Vistas.InternalArchivo.InternalTipoProduc;
 import Vistas.InternalArchivo.InternalTipoServicios;
+import Vistas.InternalArchivo.InternalTipodeCambio;
+import Vistas.InternalArchivo.InternalTransportista;
+import Vistas.InternalArchivo.InternalUsuarios;
 import java.util.LinkedList;
 import javax.swing.JInternalFrame;
 import javax.swing.JMenuItem;
@@ -282,8 +289,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jButton18, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jButton19, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton20, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                    .addComponent(jButton20, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -477,26 +483,51 @@ public class vistaPrincipal extends javax.swing.JFrame {
         jRadioButtonMenuItemMaquina.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItemMaquina.setSelected(true);
         jRadioButtonMenuItemMaquina.setText("Maquina");
+        jRadioButtonMenuItemMaquina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItemMaquinaActionPerformed(evt);
+            }
+        });
         jMenuArchiovos.add(jRadioButtonMenuItemMaquina);
 
         jRadioButtonMenuItemGalga.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItemGalga.setSelected(true);
         jRadioButtonMenuItemGalga.setText("Galga");
+        jRadioButtonMenuItemGalga.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItemGalgaActionPerformed(evt);
+            }
+        });
         jMenuArchiovos.add(jRadioButtonMenuItemGalga);
 
         jRadioButtonMenuItemClientes.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItemClientes.setSelected(true);
         jRadioButtonMenuItemClientes.setText("Cliente");
+        jRadioButtonMenuItemClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItemClientesActionPerformed(evt);
+            }
+        });
         jMenuArchiovos.add(jRadioButtonMenuItemClientes);
 
         jRadioButtonMenuItemProveedores.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItemProveedores.setSelected(true);
         jRadioButtonMenuItemProveedores.setText("Proveedor");
+        jRadioButtonMenuItemProveedores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItemProveedoresActionPerformed(evt);
+            }
+        });
         jMenuArchiovos.add(jRadioButtonMenuItemProveedores);
 
         jRadioButtonMenuItemTransportistas.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItemTransportistas.setSelected(true);
         jRadioButtonMenuItemTransportistas.setText("Transportista");
+        jRadioButtonMenuItemTransportistas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItemTransportistasActionPerformed(evt);
+            }
+        });
         jMenuArchiovos.add(jRadioButtonMenuItemTransportistas);
 
         jMenuContabilidad.setText("Contabilidad");
@@ -510,11 +541,21 @@ public class vistaPrincipal extends javax.swing.JFrame {
         jRadioButtonMenuItemTipoCambio.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItemTipoCambio.setSelected(true);
         jRadioButtonMenuItemTipoCambio.setText("Tipo de Cambio");
+        jRadioButtonMenuItemTipoCambio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItemTipoCambioActionPerformed(evt);
+            }
+        });
         jMenuArchiovos.add(jRadioButtonMenuItemTipoCambio);
 
         jRadioButtonMenuItemUsuarios.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItemUsuarios.setSelected(true);
         jRadioButtonMenuItemUsuarios.setText("Usuarios");
+        jRadioButtonMenuItemUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItemUsuariosActionPerformed(evt);
+            }
+        });
         jMenuArchiovos.add(jRadioButtonMenuItemUsuarios);
 
         jMenuConsumos.setText("Consumos");
@@ -536,16 +577,31 @@ public class vistaPrincipal extends javax.swing.JFrame {
         jRadioButtonMenuItem20.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem20.setSelected(true);
         jRadioButtonMenuItem20.setText("Cerrar");
+        jRadioButtonMenuItem20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem20ActionPerformed(evt);
+            }
+        });
         jMenuArchiovos.add(jRadioButtonMenuItem20);
 
         jRadioButtonMenuItem21.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem21.setSelected(true);
         jRadioButtonMenuItem21.setText("Aceptar");
+        jRadioButtonMenuItem21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem21ActionPerformed(evt);
+            }
+        });
         jMenuArchiovos.add(jRadioButtonMenuItem21);
 
         jRadioButtonMenuItem22.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem22.setSelected(true);
         jRadioButtonMenuItem22.setText("Grabar Como_");
+        jRadioButtonMenuItem22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem22ActionPerformed(evt);
+            }
+        });
         jMenuArchiovos.add(jRadioButtonMenuItem22);
 
         jRadioButtonMenuItem23.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -997,6 +1053,60 @@ public class vistaPrincipal extends javax.swing.JFrame {
     private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton21ActionPerformed
+
+    private void jRadioButtonMenuItemTransportistasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItemTransportistasActionPerformed
+        // TODO add your handling code here:
+        InternalTransportista ventanaTransportista = new InternalTransportista();
+        abrirVentana(ventanaTransportista, "Transportista");
+    }//GEN-LAST:event_jRadioButtonMenuItemTransportistasActionPerformed
+
+    private void jRadioButtonMenuItemProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItemProveedoresActionPerformed
+        // TODO add your handling code here:
+        InternalProveedor ventanaProveedor = new InternalProveedor();
+        abrirVentana(ventanaProveedor, "Proveedor");
+    }//GEN-LAST:event_jRadioButtonMenuItemProveedoresActionPerformed
+
+    private void jRadioButtonMenuItemMaquinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItemMaquinaActionPerformed
+        // TODO add your handling code here:
+        InternalMaquina ventanaMaquina = new InternalMaquina();
+        abrirVentana(ventanaMaquina, "Maquina");
+    }//GEN-LAST:event_jRadioButtonMenuItemMaquinaActionPerformed
+
+    private void jRadioButtonMenuItemGalgaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItemGalgaActionPerformed
+        // TODO add your handling code here:
+        InternalGalga ventanaGalga = new InternalGalga();
+        abrirVentana(ventanaGalga, "Galga");
+    }//GEN-LAST:event_jRadioButtonMenuItemGalgaActionPerformed
+
+    private void jRadioButtonMenuItemClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItemClientesActionPerformed
+        // TODO add your handling code here:
+        InternalCliente ventanaCliente = new InternalCliente();
+        abrirVentana(ventanaCliente, "Cliente");
+    }//GEN-LAST:event_jRadioButtonMenuItemClientesActionPerformed
+
+    private void jRadioButtonMenuItemTipoCambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItemTipoCambioActionPerformed
+        // TODO add your handling code here:
+        InternalTipodeCambio ventanaTipodeCambio = new InternalTipodeCambio();
+        abrirVentana(ventanaTipodeCambio, "TipodeCambio");
+    }//GEN-LAST:event_jRadioButtonMenuItemTipoCambioActionPerformed
+
+    private void jRadioButtonMenuItemUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItemUsuariosActionPerformed
+        // TODO add your handling code here:
+        InternalUsuarios ventanaUsuarios = new InternalUsuarios();
+        abrirVentana(ventanaUsuarios, "Usuarios");
+    }//GEN-LAST:event_jRadioButtonMenuItemUsuariosActionPerformed
+
+    private void jRadioButtonMenuItem20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem20ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButtonMenuItem20ActionPerformed
+
+    private void jRadioButtonMenuItem21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem21ActionPerformed
+        // TODO add your handling code here:  
+    }//GEN-LAST:event_jRadioButtonMenuItem21ActionPerformed
+
+    private void jRadioButtonMenuItem22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem22ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButtonMenuItem22ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
