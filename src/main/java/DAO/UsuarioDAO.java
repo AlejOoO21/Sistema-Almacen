@@ -24,7 +24,10 @@ public class UsuarioDAO {
                 System.out.println("--- CONEXIÓN Y CONSULTA EXITOSA ---");
                 System.out.println("Usuario encontrado en BD: " + rs.getString("nomUsuarios"));
                 // Opcional: imprimir rol u otro campo de la tabla
-                // System.out.println("Rol: " + rs.getString("rol")); 
+                // System.out.println("Rol: " + rs.getString("rol"));
+                // Extrae el nombre del usuario desde la columna 'nomUsuarios' de la BD
+                String usuarioBD = rs.getString("nomUsuarios"); 
+                DAO.SesionDAO.setUsuarioIngresado(usuarioBD); // O guarda el parámetro 'usuario' recibido
                 return true;
             } else {
                 // Si entra aquí, las credenciales enviadas no coinciden

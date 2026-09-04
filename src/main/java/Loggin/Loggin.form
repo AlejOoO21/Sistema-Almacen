@@ -205,6 +205,9 @@
             <Property name="text" type="java.lang.String" value=" "/>
             <Property name="inheritsPopupMenu" type="boolean" value="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFielFechaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelFecha">
           <Properties>

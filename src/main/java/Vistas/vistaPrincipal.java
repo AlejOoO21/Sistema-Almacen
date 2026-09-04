@@ -63,7 +63,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
-        jDesktopPanePantallas = new Vistas.DesktopConFondo();
+        jDesktopPanePantallas = new DAO.DesktopConFondo();
         Menu = new javax.swing.JMenuBar();
         jMenuArchiovos = new javax.swing.JMenu();
         jRadioButtonMenuItemAlmacenes = new javax.swing.JRadioButtonMenuItem();

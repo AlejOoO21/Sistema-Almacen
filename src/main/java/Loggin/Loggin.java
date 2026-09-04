@@ -10,47 +10,43 @@ public class Loggin extends javax.swing.JFrame {
 
     public Loggin() {
         initComponents();
-    
-    this.setLocationRelativeTo(null); // Centra la ventana
-    
-    // Al presionar ENTER en cualquier campo, ejecutará el evento de jButtonAceptarLoggin
-    this.getRootPane().setDefaultButton(jButtonAceptarLoggin);
-    
-    LocalDate fechaActual = LocalDate.now();
-    
-    // 2. Definir el formato (Día/Mes/Año)
-    DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-    
-    // 3. Asignar la fecha formateada al campo txtFecha
-    jTextFielFecha.setText(fechaActual.format(formato));
-    
-    // 4. Asignar el año actual al campo txtPeriodo
-    jTextFieldPeriodo.setText(String.valueOf(fechaActual.getYear()));
+        this.setLocationRelativeTo(null);
+        this.getRootPane().setDefaultButton(jButtonAceptarLoggin);
+
+        LocalDate fechaActual = LocalDate.now();
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        // Asignar al TextField del Login
+        jTextFielFecha.setText(fechaActual.format(formato));
+        jTextFieldPeriodo.setText(String.valueOf(fechaActual.getYear()));
+
+        // ----> AÑADE ESTA LÍNEA AHORA:
+        DAO.SesionDAO.setFechaIngresada(jTextFielFecha.getText());
     }
     
     private void validarYEntrar() {
-    String usuario = jTextFielUsuario.getText().trim();
-    String password = new String(jPasswordField.getPassword());
+        String usuario = jTextFielUsuario.getText().trim();
+        String password = new String(jPasswordField.getPassword());
 
-    if (usuario.isEmpty() || password.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Por favor complete todos los campos.", "Campos Vacíos", JOptionPane.WARNING_MESSAGE);
-        return;
+        if (usuario.isEmpty() || password.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor complete todos los campos.", "Campos Vacíos", JOptionPane.WARNING_MESSAGE);
+            return;
     }
 
-    UsuarioDAO dao = new UsuarioDAO();
-    boolean esValido = dao.validarUsuario(usuario, password);
+        UsuarioDAO dao = new UsuarioDAO();
+        boolean esValido = dao.validarUsuario(usuario, password);
 
-    if (esValido) {
-        // Ingreso directo a la ventana principal
-        vistaPrincipal principal = new vistaPrincipal();
-        principal.setVisible(true);
-        principal.setLocationRelativeTo(null);
-        this.dispose(); 
-    } else {
-        // Alerta visible únicamente si falla la autenticación
-        JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos.", "Error de Autenticación", JOptionPane.ERROR_MESSAGE);
-        jPasswordField.setText("");
-        jPasswordField.requestFocus();
+        if (esValido) {
+            // Ingreso directo a la ventana principal
+            vistaPrincipal principal = new vistaPrincipal();
+            principal.setVisible(true);
+            principal.setLocationRelativeTo(null);
+            this.dispose(); 
+        } else {
+            // Alerta visible únicamente si falla la autenticación
+            JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos.", "Error de Autenticación", JOptionPane.ERROR_MESSAGE);
+            jPasswordField.setText("");
+            jPasswordField.requestFocus();
     }
 }
     @SuppressWarnings("unchecked")
@@ -121,6 +117,11 @@ public class Loggin extends javax.swing.JFrame {
         jTextFielFecha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextFielFecha.setText(" ");
         jTextFielFecha.setInheritsPopupMenu(true);
+        jTextFielFecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFielFechaActionPerformed(evt);
+            }
+        });
 
         jLabelFecha.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabelFecha.setText("Fecha: ");
@@ -236,6 +237,8 @@ public class Loggin extends javax.swing.JFrame {
 
     private void jButtonAceptarLogginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarLogginActionPerformed
         // TODO add your handling code here:
+        String fechaDelTextField = jTextFielFecha.getText();
+        DAO.SesionDAO.setFechaIngresada(fechaDelTextField);
         validarYEntrar();
     }//GEN-LAST:event_jButtonAceptarLogginActionPerformed
 
@@ -243,6 +246,10 @@ public class Loggin extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_jButtonCancelarLogginActionPerformed
+
+    private void jTextFielFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFielFechaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFielFechaActionPerformed
 
     /**
      * @param args the command line arguments
