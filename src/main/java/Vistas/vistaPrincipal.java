@@ -18,12 +18,9 @@ public class vistaPrincipal extends javax.swing.JFrame {
     private LinkedList<JInternalFrame> ventanasAbiertas = new LinkedList<>();
     private final int MAX_VENTANAS = 6;
     
-    public vistaPrincipal() {
-        
+    public vistaPrincipal() {   
         initComponents();
-        
-
-            // 1. Quitar límites de tamaño
+        // 1. Quitar límites de tamaño
         FONDO.setPreferredSize(null);
         FONDO.setMinimumSize(null);
 
@@ -35,7 +32,6 @@ public class vistaPrincipal extends javax.swing.JFrame {
         this.repaint();
         }
         
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -50,7 +46,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
         jButton22 = new javax.swing.JButton();
         jButton23 = new javax.swing.JButton();
         jButton24 = new javax.swing.JButton();
-        jDesktopPanePantallas = new Vistas.DesktopConFondo();
+        jDesktopPanePantallas = new DAO.DesktopConFondo();
         jToolBar1 = new javax.swing.JToolBar();
         jSeparator2 = new javax.swing.JToolBar.Separator();
         jButton3 = new javax.swing.JButton();
@@ -222,31 +218,31 @@ public class vistaPrincipal extends javax.swing.JFrame {
         jToolBar1.setRollover(true);
         jToolBar1.add(jSeparator2);
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/Guardar.png"))); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Guardar.png"))); // NOI18N
         jButton3.setFocusable(false);
         jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(jButton3);
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/GuardarComo.png"))); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/GuardarComo.png"))); // NOI18N
         jButton4.setFocusable(false);
         jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(jButton4);
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/Imprimir.png"))); // NOI18N
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Imprimir.png"))); // NOI18N
         jButton5.setFocusable(false);
         jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton5.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(jButton5);
 
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/Excel_.png"))); // NOI18N
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Excel_.png"))); // NOI18N
         jButton6.setFocusable(false);
         jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton6.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(jButton6);
 
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/Calculo.png"))); // NOI18N
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Calculo.png"))); // NOI18N
         jButton7.setFocusable(false);
         jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton7.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);

@@ -1076,7 +1076,7 @@
         </Container>
         <Container class="javax.swing.JDesktopPane" name="jDesktopPanePantallas">
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new Vistas.DesktopConFondo()"/>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new DAO.DesktopConFondo()"/>
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
@@ -1114,7 +1114,7 @@
             <Component class="javax.swing.JButton" name="jButton3">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Pictures/Guardar.png"/>
+                  <Image iconType="3" name="/imagenes/Guardar.png"/>
                 </Property>
                 <Property name="focusable" type="boolean" value="false"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -1124,7 +1124,7 @@
             <Component class="javax.swing.JButton" name="jButton4">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Pictures/GuardarComo.png"/>
+                  <Image iconType="3" name="/imagenes/GuardarComo.png"/>
                 </Property>
                 <Property name="focusable" type="boolean" value="false"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -1134,7 +1134,7 @@
             <Component class="javax.swing.JButton" name="jButton5">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Pictures/Imprimir.png"/>
+                  <Image iconType="3" name="/imagenes/Imprimir.png"/>
                 </Property>
                 <Property name="focusable" type="boolean" value="false"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -1144,7 +1144,7 @@
             <Component class="javax.swing.JButton" name="jButton6">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Pictures/Excel_.png"/>
+                  <Image iconType="3" name="/imagenes/Excel_.png"/>
                 </Property>
                 <Property name="focusable" type="boolean" value="false"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -1154,7 +1154,7 @@
             <Component class="javax.swing.JButton" name="jButton7">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Pictures/Calculo.png"/>
+                  <Image iconType="3" name="/imagenes/Calculo.png"/>
                 </Property>
                 <Property name="focusable" type="boolean" value="false"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
