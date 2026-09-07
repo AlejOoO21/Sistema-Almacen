@@ -2,18 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
-package Vistas.InternalArchivo;
+package Vistas.Archivos.InternalProveedor;
 
 /**
  *
- * @author GHOST
+ * @author Rodrigo
  */
-public class InternalTipoProduc extends javax.swing.JInternalFrame {
+public class InternalProveedor extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form InternalTipoProduc
+     * Creates new form InternalProveedor
      */
-    public InternalTipoProduc() {
+    public InternalProveedor() {
         initComponents();
     }
 

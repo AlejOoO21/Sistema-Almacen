@@ -41,11 +41,14 @@ public class Loggin extends javax.swing.JFrame {
             // 1. Guardar las credenciales/fecha en la Sesión Global
             Conect.Sesion.usuarioActivo = usuario;
             Conect.Sesion.fechaActiva = fecha;
-
+            
             // 2. Abrir la vista principal
             vistaPrincipal principal = new vistaPrincipal();
             principal.setVisible(true);
-
+            principal.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+            principal.setLocationRelativeTo(null);
+            principal.setVisible(true);
+            
             // 3. Cerrar el login
             this.dispose();
         } else {

@@ -2,18 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
-package Vistas.InternalArchivo;
+package Vistas.Archivos.InternalGalga;
 
 /**
  *
  * @author Rodrigo
  */
-public class InternalProveedor extends javax.swing.JInternalFrame {
+public class InternalGalga extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form InternalProveedor
+     * Creates new form InternalGalga
      */
-    public InternalProveedor() {
+    public InternalGalga() {
         initComponents();
     }
 

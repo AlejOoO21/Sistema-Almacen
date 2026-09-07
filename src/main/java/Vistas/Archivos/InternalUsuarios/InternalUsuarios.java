@@ -2,18 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
-package Vistas.InternalArchivo;
+package Vistas.Archivos.InternalUsuarios;
 
 /**
  *
  * @author Rodrigo
  */
-public class InternalCliente extends javax.swing.JInternalFrame {
+public class InternalUsuarios extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form InternalCliente
+     * Creates new form InternalUsuarios
      */
-    public InternalCliente() {
+    public InternalUsuarios() {
         initComponents();
     }
 
