@@ -1,4 +1,4 @@
-package Vistas;
+package DAO;
 
 import java.awt.Graphics;
 import java.awt.Image;
@@ -11,7 +11,9 @@ public class DesktopConFondo extends JDesktopPane {
 
     private Image imagen;
 
-    public DesktopConFondo() {
+    public DesktopConFondo() 
+    
+    {
         // Carga la imagen desde la carpeta comprimida/compilada de Maven
         URL imgUrl = getClass().getResource("/imagenes/Fondo_Desktop.png");
 
