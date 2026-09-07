@@ -96,7 +96,9 @@ public class vistaPrincipal extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jSeparator4 = new javax.swing.JToolBar.Separator();
         jButton6 = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JToolBar.Separator();
         jButton7 = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JToolBar.Separator();
         jButton25 = new javax.swing.JButton();
@@ -339,7 +341,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
         );
         jDesktopPanePantallasLayout.setVerticalGroup(
             jDesktopPanePantallasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1580, Short.MAX_VALUE)
+            .addGap(0, 1576, Short.MAX_VALUE)
         );
 
         FONDO.add(jDesktopPanePantallas, java.awt.BorderLayout.CENTER);
@@ -364,12 +366,14 @@ public class vistaPrincipal extends javax.swing.JFrame {
         jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton5.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(jButton5);
+        jToolBar1.add(jSeparator4);
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/Excel_.png"))); // NOI18N
         jButton6.setFocusable(false);
         jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton6.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(jButton6);
+        jToolBar1.add(jSeparator1);
 
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/Calculo.png"))); // NOI18N
         jButton7.setFocusable(false);
@@ -391,6 +395,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
         Menu.setBorder(new javax.swing.border.MatteBorder(null));
 
         jMenuArchiovos.setText("Archivos");
+        jMenuArchiovos.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
 
         jRadioButtonMenuItemAlmacenes.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItemAlmacenes.setSelected(true);
@@ -637,6 +642,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
         Menu.add(jMenuArchiovos);
 
         jMenuRegistros.setText("Registro");
+        jMenuRegistros.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
 
         jRadioButtonMenuItem28.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem28.setSelected(true);
@@ -721,6 +727,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
         Menu.add(jMenuRegistros);
 
         jMenuIngresos.setText("Ingresos");
+        jMenuIngresos.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
 
         jMenu15.setText("Ingresos a");
         jMenuIngresos.add(jMenu15);
@@ -753,6 +760,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
         Menu.add(jMenuIngresos);
 
         jMenuSalidas.setText("Salidas");
+        jMenuSalidas.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
 
         jMenu16.setText("Salida de");
 
@@ -793,6 +801,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
         Menu.add(jMenuSalidas);
 
         jMenuTransferencias.setText("Transferencias");
+        jMenuTransferencias.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
 
         jMenu18.setText("Transferencias");
 
@@ -815,6 +824,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
         Menu.add(jMenuTransferencias);
 
         jMenuRequerimientos.setText("Requerimientos");
+        jMenuRequerimientos.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
 
         jRadioButtonMenuItem59.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem59.setSelected(true);
@@ -872,6 +882,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
         Menu.add(jMenuRequerimientos);
 
         jMenuGuiasElectronicas.setText("Guias Electronicas");
+        jMenuGuiasElectronicas.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
 
         jRadioButtonMenuItem69.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem69.setSelected(true);
@@ -886,6 +897,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
         Menu.add(jMenuGuiasElectronicas);
 
         jMenuConsultas.setText("Consultas");
+        jMenuConsultas.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
 
         jRadioButtonMenuItem80.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem80.setSelected(true);
@@ -933,6 +945,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
         Menu.add(jMenuConsultas);
 
         jMenuProcesos.setText("Procesos");
+        jMenuProcesos.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
 
         jRadioButtonMenuItem71.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem71.setSelected(true);
@@ -982,6 +995,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
         Menu.add(jMenuProcesos);
 
         jMenuVentanas.setText("Ventanas");
+        jMenuVentanas.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
         jMenuVentanas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuVentanasActionPerformed(evt);
@@ -1313,8 +1327,10 @@ public class vistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItemTipoServicios;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItemTransportistas;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItemUsuarios;
+    private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;
+    private javax.swing.JToolBar.Separator jSeparator4;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 }

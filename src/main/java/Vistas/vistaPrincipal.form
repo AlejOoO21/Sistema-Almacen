@@ -14,6 +14,9 @@
         <Menu class="javax.swing.JMenu" name="jMenuArchiovos">
           <Properties>
             <Property name="text" type="java.lang.String" value="Archivos"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI Semibold" size="14" style="1"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JRadioButtonMenuItem" name="jRadioButtonMenuItemAlmacenes">
@@ -343,6 +346,9 @@
         <Menu class="javax.swing.JMenu" name="jMenuRegistros">
           <Properties>
             <Property name="text" type="java.lang.String" value="Registro"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI Semibold" size="14" style="1"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JRadioButtonMenuItem" name="jRadioButtonMenuItem28">
@@ -494,6 +500,9 @@
         <Menu class="javax.swing.JMenu" name="jMenuIngresos">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ingresos"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI Semibold" size="14" style="1"/>
+            </Property>
           </Properties>
           <SubComponents>
             <Menu class="javax.swing.JMenu" name="jMenu15">
@@ -551,6 +560,9 @@
         <Menu class="javax.swing.JMenu" name="jMenuSalidas">
           <Properties>
             <Property name="text" type="java.lang.String" value="Salidas"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI Semibold" size="14" style="1"/>
+            </Property>
           </Properties>
           <SubComponents>
             <Menu class="javax.swing.JMenu" name="jMenu16">
@@ -620,6 +632,9 @@
         <Menu class="javax.swing.JMenu" name="jMenuTransferencias">
           <Properties>
             <Property name="text" type="java.lang.String" value="Transferencias"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI Semibold" size="14" style="1"/>
+            </Property>
           </Properties>
           <SubComponents>
             <Menu class="javax.swing.JMenu" name="jMenu18">
@@ -658,6 +673,9 @@
         <Menu class="javax.swing.JMenu" name="jMenuRequerimientos">
           <Properties>
             <Property name="text" type="java.lang.String" value="Requerimientos"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI Semibold" size="14" style="1"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JRadioButtonMenuItem" name="jRadioButtonMenuItem59">
@@ -760,6 +778,9 @@
         <Menu class="javax.swing.JMenu" name="jMenuGuiasElectronicas">
           <Properties>
             <Property name="text" type="java.lang.String" value="Guias Electronicas"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI Semibold" size="14" style="1"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JRadioButtonMenuItem" name="jRadioButtonMenuItem69">
@@ -785,6 +806,9 @@
         <Menu class="javax.swing.JMenu" name="jMenuConsultas">
           <Properties>
             <Property name="text" type="java.lang.String" value="Consultas"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI Semibold" size="14" style="1"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JRadioButtonMenuItem" name="jRadioButtonMenuItem80">
@@ -863,6 +887,9 @@
         <Menu class="javax.swing.JMenu" name="jMenuProcesos">
           <Properties>
             <Property name="text" type="java.lang.String" value="Procesos"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI Semibold" size="14" style="1"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JRadioButtonMenuItem" name="jRadioButtonMenuItem71">
@@ -951,6 +978,9 @@
         <Menu class="javax.swing.JMenu" name="jMenuVentanas">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ventanas"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI Semibold" size="14" style="1"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuVentanasActionPerformed"/>
@@ -1252,7 +1282,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="1580" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="1576" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -1301,6 +1331,8 @@
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
             </Component>
+            <Component class="javax.swing.JToolBar$Separator" name="jSeparator4">
+            </Component>
             <Component class="javax.swing.JButton" name="jButton6">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -1310,6 +1342,8 @@
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JToolBar$Separator" name="jSeparator1">
             </Component>
             <Component class="javax.swing.JButton" name="jButton7">
               <Properties>
