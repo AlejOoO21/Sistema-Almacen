@@ -2,18 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
-package Vistas.InternalArchivo;
+package Vistas.Archivos.InternalCierreMezValo;
 
 /**
  *
- * @author Rodrigo
+ * @author GHOST
  */
-public class InternalCliente extends javax.swing.JInternalFrame {
+public class InternalCierreValorización extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form InternalCliente
+     * Creates new form InternalCierreValorización
      */
-    public InternalCliente() {
+    public InternalCierreValorización() {
         initComponents();
     }
 

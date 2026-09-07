@@ -1,4 +1,4 @@
-package Vistas.InternalArchivo;
+package Vistas.Archivos.InternalAlmacenes;
 
 import Conect.conexion;
 import java.awt.Component;
