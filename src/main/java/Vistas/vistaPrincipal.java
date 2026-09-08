@@ -15,6 +15,16 @@ import Vistas.Archivos.InternalTipoServic.InternalTipoServicios;
 import Vistas.Archivos.InternalTipoCambio.InternalTipodeCambio;
 import Vistas.Archivos.InternalTransportista.InternalTransportista;
 import Vistas.Archivos.InternalUsuarios.InternalUsuarios;
+import Vistas.Ingresos.Frame_GuiasElectronicas.InternalGuiasElectronicas;
+import Vistas.Ingresos.Frame_IngresoDetallado.Internal_IngresoDetallado;
+import Vistas.Ingresos.Frame_Ingresos.InternalIngresos;
+import Vistas.Ingresos.Frame_Mantenimiento.InternalMantenimiento;
+import Vistas.Ingresos.Frame_TipoIngreso.InternalTipo_de_Ingreso;
+import Vistas.Salidas.Frame_Mantenimiento.InternalMantenimientoSalida;
+import Vistas.Salidas.Frame_Otros.InternalOtros;
+import Vistas.Salidas.Frame_SalidaDetallada.InternalSalidaDetallada;
+import Vistas.Salidas.Frame_Salidas.InternalSalidas;
+import Vistas.Transferencias.Frame_Consultas.InternalConsulta;
 import java.util.LinkedList;
 import javax.swing.JInternalFrame;
 import javax.swing.JMenuItem;
@@ -100,11 +110,12 @@ public class vistaPrincipal extends javax.swing.JFrame {
         jButtonGuardarComo = new javax.swing.JButton();
         jButtonInprimir = new javax.swing.JButton();
         jButtonGuardarExcel = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JToolBar.Separator();
         jButton7 = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JToolBar.Separator();
         jButtonSalirSistema = new javax.swing.JButton();
         Menu = new javax.swing.JMenuBar();
-        jMenuArchiovos = new javax.swing.JMenu();
+        jMenuArchivos = new javax.swing.JMenu();
         jRadioButtonMenuItemAlmacenes = new javax.swing.JRadioButtonMenuItem();
         jRadioButtonMenuItemLineasFamilias = new javax.swing.JRadioButtonMenuItem();
         jRadioButtonMenuItemTipoProd = new javax.swing.JRadioButtonMenuItem();
@@ -342,7 +353,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
         );
         jDesktopPanePantallasLayout.setVerticalGroup(
             jDesktopPanePantallasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1347, Short.MAX_VALUE)
+            .addGap(0, 1349, Short.MAX_VALUE)
         );
 
         FONDO.add(jDesktopPanePantallas, java.awt.BorderLayout.CENTER);
@@ -373,6 +384,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
         jButtonGuardarExcel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonGuardarExcel.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(jButtonGuardarExcel);
+        jToolBar1.add(jSeparator1);
 
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Calculo.png"))); // NOI18N
         jButton7.setFocusable(false);
@@ -399,8 +411,8 @@ public class vistaPrincipal extends javax.swing.JFrame {
         Menu.setBorder(new javax.swing.border.MatteBorder(null));
         Menu.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
-        jMenuArchiovos.setText("Archivos");
-        jMenuArchiovos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuArchivos.setText("Archivos");
+        jMenuArchivos.setFont(new java.awt.Font("Segoe UI Semibold", 0, 13)); // NOI18N
 
         jRadioButtonMenuItemAlmacenes.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItemAlmacenes.setSelected(true);
@@ -410,7 +422,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
                 jRadioButtonMenuItemAlmacenesActionPerformed(evt);
             }
         });
-        jMenuArchiovos.add(jRadioButtonMenuItemAlmacenes);
+        jMenuArchivos.add(jRadioButtonMenuItemAlmacenes);
 
         jRadioButtonMenuItemLineasFamilias.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItemLineasFamilias.setSelected(true);
@@ -420,7 +432,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
                 jRadioButtonMenuItemLineasFamiliasActionPerformed(evt);
             }
         });
-        jMenuArchiovos.add(jRadioButtonMenuItemLineasFamilias);
+        jMenuArchivos.add(jRadioButtonMenuItemLineasFamilias);
 
         jRadioButtonMenuItemTipoProd.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItemTipoProd.setSelected(true);
@@ -430,7 +442,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
                 jRadioButtonMenuItemTipoProdActionPerformed(evt);
             }
         });
-        jMenuArchiovos.add(jRadioButtonMenuItemTipoProd);
+        jMenuArchivos.add(jRadioButtonMenuItemTipoProd);
 
         jRadioButtonMenuItemProductos.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItemProductos.setSelected(true);
@@ -440,7 +452,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
                 jRadioButtonMenuItemProductosActionPerformed(evt);
             }
         });
-        jMenuArchiovos.add(jRadioButtonMenuItemProductos);
+        jMenuArchivos.add(jRadioButtonMenuItemProductos);
 
         jRadioButtonMenuItemCierreMesValorizacion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItemCierreMesValorizacion.setSelected(true);
@@ -450,7 +462,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
                 jRadioButtonMenuItemCierreMesValorizacionActionPerformed(evt);
             }
         });
-        jMenuArchiovos.add(jRadioButtonMenuItemCierreMesValorizacion);
+        jMenuArchivos.add(jRadioButtonMenuItemCierreMesValorizacion);
 
         jMenuCaracteristicas.setText("Caracteristicas");
 
@@ -458,7 +470,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
         jRadioButtonMenuItem6.setText("jRadioButtonMenuItem6");
         jMenuCaracteristicas.add(jRadioButtonMenuItem6);
 
-        jMenuArchiovos.add(jMenuCaracteristicas);
+        jMenuArchivos.add(jMenuCaracteristicas);
 
         jRadioButtonMenuItemMuestras.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItemMuestras.setSelected(true);
@@ -468,7 +480,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
                 jRadioButtonMenuItemMuestrasActionPerformed(evt);
             }
         });
-        jMenuArchiovos.add(jRadioButtonMenuItemMuestras);
+        jMenuArchivos.add(jRadioButtonMenuItemMuestras);
 
         jRadioButtonMenuItemTipoServicios.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItemTipoServicios.setSelected(true);
@@ -478,7 +490,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
                 jRadioButtonMenuItemTipoServiciosActionPerformed(evt);
             }
         });
-        jMenuArchiovos.add(jRadioButtonMenuItemTipoServicios);
+        jMenuArchivos.add(jRadioButtonMenuItemTipoServicios);
 
         jRadioButtonMenuItemTecnica.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItemTecnica.setSelected(true);
@@ -488,7 +500,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
                 jRadioButtonMenuItemTecnicaActionPerformed(evt);
             }
         });
-        jMenuArchiovos.add(jRadioButtonMenuItemTecnica);
+        jMenuArchivos.add(jRadioButtonMenuItemTecnica);
 
         jRadioButtonMenuItemMaquina.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItemMaquina.setSelected(true);
@@ -498,7 +510,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
                 jRadioButtonMenuItemMaquinaActionPerformed(evt);
             }
         });
-        jMenuArchiovos.add(jRadioButtonMenuItemMaquina);
+        jMenuArchivos.add(jRadioButtonMenuItemMaquina);
 
         jRadioButtonMenuItemGalga.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItemGalga.setSelected(true);
@@ -508,7 +520,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
                 jRadioButtonMenuItemGalgaActionPerformed(evt);
             }
         });
-        jMenuArchiovos.add(jRadioButtonMenuItemGalga);
+        jMenuArchivos.add(jRadioButtonMenuItemGalga);
 
         jRadioButtonMenuItemClientes.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItemClientes.setSelected(true);
@@ -518,7 +530,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
                 jRadioButtonMenuItemClientesActionPerformed(evt);
             }
         });
-        jMenuArchiovos.add(jRadioButtonMenuItemClientes);
+        jMenuArchivos.add(jRadioButtonMenuItemClientes);
 
         jRadioButtonMenuItemProveedores.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItemProveedores.setSelected(true);
@@ -528,7 +540,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
                 jRadioButtonMenuItemProveedoresActionPerformed(evt);
             }
         });
-        jMenuArchiovos.add(jRadioButtonMenuItemProveedores);
+        jMenuArchivos.add(jRadioButtonMenuItemProveedores);
 
         jRadioButtonMenuItemTransportistas.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItemTransportistas.setSelected(true);
@@ -538,7 +550,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
                 jRadioButtonMenuItemTransportistasActionPerformed(evt);
             }
         });
-        jMenuArchiovos.add(jRadioButtonMenuItemTransportistas);
+        jMenuArchivos.add(jRadioButtonMenuItemTransportistas);
 
         jMenuContabilidad.setText("Contabilidad");
 
@@ -546,7 +558,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
         jRadioButtonMenuItem44.setText("jRadioButtonMenuItem44");
         jMenuContabilidad.add(jRadioButtonMenuItem44);
 
-        jMenuArchiovos.add(jMenuContabilidad);
+        jMenuArchivos.add(jMenuContabilidad);
 
         jRadioButtonMenuItemTipoCambio.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItemTipoCambio.setSelected(true);
@@ -556,7 +568,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
                 jRadioButtonMenuItemTipoCambioActionPerformed(evt);
             }
         });
-        jMenuArchiovos.add(jRadioButtonMenuItemTipoCambio);
+        jMenuArchivos.add(jRadioButtonMenuItemTipoCambio);
 
         jRadioButtonMenuItemUsuarios.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItemUsuarios.setSelected(true);
@@ -566,7 +578,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
                 jRadioButtonMenuItemUsuariosActionPerformed(evt);
             }
         });
-        jMenuArchiovos.add(jRadioButtonMenuItemUsuarios);
+        jMenuArchivos.add(jRadioButtonMenuItemUsuarios);
 
         jMenuConsumos.setText("Consumos");
 
@@ -574,7 +586,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
         jRadioButtonMenuItem26.setText("jRadioButtonMenuItem26");
         jMenuConsumos.add(jRadioButtonMenuItem26);
 
-        jMenuArchiovos.add(jMenuConsumos);
+        jMenuArchivos.add(jMenuConsumos);
 
         jMenuOtros.setText("Otros");
 
@@ -582,7 +594,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
         jRadioButtonMenuItem27.setText("jRadioButtonMenuItem27");
         jMenuOtros.add(jRadioButtonMenuItem27);
 
-        jMenuArchiovos.add(jMenuOtros);
+        jMenuArchivos.add(jMenuOtros);
 
         jRadioButtonMenuItem20.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem20.setSelected(true);
@@ -592,7 +604,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
                 jRadioButtonMenuItem20ActionPerformed(evt);
             }
         });
-        jMenuArchiovos.add(jRadioButtonMenuItem20);
+        jMenuArchivos.add(jRadioButtonMenuItem20);
 
         jRadioButtonMenuItem21.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem21.setSelected(true);
@@ -602,7 +614,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
                 jRadioButtonMenuItem21ActionPerformed(evt);
             }
         });
-        jMenuArchiovos.add(jRadioButtonMenuItem21);
+        jMenuArchivos.add(jRadioButtonMenuItem21);
 
         jRadioButtonMenuItem22.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem22.setSelected(true);
@@ -612,42 +624,42 @@ public class vistaPrincipal extends javax.swing.JFrame {
                 jRadioButtonMenuItem22ActionPerformed(evt);
             }
         });
-        jMenuArchiovos.add(jRadioButtonMenuItem22);
+        jMenuArchivos.add(jRadioButtonMenuItem22);
 
         jRadioButtonMenuItem23.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem23.setSelected(true);
         jRadioButtonMenuItem23.setText("Grabar Excel");
-        jMenuArchiovos.add(jRadioButtonMenuItem23);
+        jMenuArchivos.add(jRadioButtonMenuItem23);
 
         jRadioButtonMenuItem24.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem24.setSelected(true);
         jRadioButtonMenuItem24.setText("Refrescar");
-        jMenuArchiovos.add(jRadioButtonMenuItem24);
+        jMenuArchivos.add(jRadioButtonMenuItem24);
 
         jRadioButtonMenuItem25.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem25.setSelected(true);
         jRadioButtonMenuItem25.setText("Imprimir");
-        jMenuArchiovos.add(jRadioButtonMenuItem25);
+        jMenuArchivos.add(jRadioButtonMenuItem25);
 
         jRadioButtonMenuItem10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem10.setSelected(true);
         jRadioButtonMenuItem10.setText("Impresion Previa");
-        jMenuArchiovos.add(jRadioButtonMenuItem10);
+        jMenuArchivos.add(jRadioButtonMenuItem10);
 
         jRadioButtonMenuItem11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem11.setSelected(true);
         jRadioButtonMenuItem11.setText("Configurar Impresora");
-        jMenuArchiovos.add(jRadioButtonMenuItem11);
+        jMenuArchivos.add(jRadioButtonMenuItem11);
 
         jRadioButtonMenuItem12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem12.setSelected(true);
         jRadioButtonMenuItem12.setText("Salir");
-        jMenuArchiovos.add(jRadioButtonMenuItem12);
+        jMenuArchivos.add(jRadioButtonMenuItem12);
 
-        Menu.add(jMenuArchiovos);
+        Menu.add(jMenuArchivos);
 
         jMenuRegistros.setText("Registro");
-        jMenuRegistros.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuRegistros.setFont(new java.awt.Font("Segoe UI Semibold", 0, 13)); // NOI18N
 
         jRadioButtonMenuItem28.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem28.setSelected(true);
@@ -732,7 +744,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
         Menu.add(jMenuRegistros);
 
         jMenuIngresos.setText("Ingresos");
-        jMenuIngresos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuIngresos.setFont(new java.awt.Font("Segoe UI Semibold", 0, 13)); // NOI18N
 
         jMenu15.setText("Ingresos a");
         jMenuIngresos.add(jMenu15);
@@ -740,32 +752,57 @@ public class vistaPrincipal extends javax.swing.JFrame {
         jRadioButtonMenuItem46.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem46.setSelected(true);
         jRadioButtonMenuItem46.setText("Ingresos");
+        jRadioButtonMenuItem46.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem46ActionPerformed(evt);
+            }
+        });
         jMenuIngresos.add(jRadioButtonMenuItem46);
 
         jRadioButtonMenuItem47.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem47.setSelected(true);
         jRadioButtonMenuItem47.setText("Guias Electronicas");
+        jRadioButtonMenuItem47.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem47ActionPerformed(evt);
+            }
+        });
         jMenuIngresos.add(jRadioButtonMenuItem47);
 
         jRadioButtonMenuItem48.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem48.setSelected(true);
         jRadioButtonMenuItem48.setText("Mantenimiento");
+        jRadioButtonMenuItem48.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem48ActionPerformed(evt);
+            }
+        });
         jMenuIngresos.add(jRadioButtonMenuItem48);
 
         jRadioButtonMenuItem49.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem49.setSelected(true);
         jRadioButtonMenuItem49.setText("Actualizar Tipo de Ingreso");
+        jRadioButtonMenuItem49.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem49ActionPerformed(evt);
+            }
+        });
         jMenuIngresos.add(jRadioButtonMenuItem49);
 
         jRadioButtonMenuItem50.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem50.setSelected(true);
         jRadioButtonMenuItem50.setText("Listado Ingresos Detallado");
+        jRadioButtonMenuItem50.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem50ActionPerformed(evt);
+            }
+        });
         jMenuIngresos.add(jRadioButtonMenuItem50);
 
         Menu.add(jMenuIngresos);
 
         jMenuSalidas.setText("Salidas");
-        jMenuSalidas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuSalidas.setFont(new java.awt.Font("Segoe UI Semibold", 0, 13)); // NOI18N
 
         jMenu16.setText("Salida de");
 
@@ -778,6 +815,11 @@ public class vistaPrincipal extends javax.swing.JFrame {
         jRadioButtonMenuItem45.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem45.setSelected(true);
         jRadioButtonMenuItem45.setText("Salidas");
+        jRadioButtonMenuItem45.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem45ActionPerformed(evt);
+            }
+        });
         jMenuSalidas.add(jRadioButtonMenuItem45);
 
         jMenu17.setText("Ventas");
@@ -791,22 +833,37 @@ public class vistaPrincipal extends javax.swing.JFrame {
         jRadioButtonMenuItem51.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem51.setSelected(true);
         jRadioButtonMenuItem51.setText("Otros");
+        jRadioButtonMenuItem51.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem51ActionPerformed(evt);
+            }
+        });
         jMenuSalidas.add(jRadioButtonMenuItem51);
 
         jRadioButtonMenuItem52.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem52.setSelected(true);
         jRadioButtonMenuItem52.setText("Mantenimiento");
+        jRadioButtonMenuItem52.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem52ActionPerformed(evt);
+            }
+        });
         jMenuSalidas.add(jRadioButtonMenuItem52);
 
         jRadioButtonMenuItem53.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem53.setSelected(true);
         jRadioButtonMenuItem53.setText("Listado Salida Detallada");
+        jRadioButtonMenuItem53.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem53ActionPerformed(evt);
+            }
+        });
         jMenuSalidas.add(jRadioButtonMenuItem53);
 
         Menu.add(jMenuSalidas);
 
         jMenuTransferencias.setText("Transferencias");
-        jMenuTransferencias.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuTransferencias.setFont(new java.awt.Font("Segoe UI Semibold", 0, 13)); // NOI18N
 
         jMenu18.setText("Transferencias");
 
@@ -819,6 +876,11 @@ public class vistaPrincipal extends javax.swing.JFrame {
         jRadioButtonMenuItem56.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem56.setSelected(true);
         jRadioButtonMenuItem56.setText("Consulta");
+        jRadioButtonMenuItem56.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem56ActionPerformed(evt);
+            }
+        });
         jMenuTransferencias.add(jRadioButtonMenuItem56);
 
         jRadioButtonMenuItem57.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -829,7 +891,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
         Menu.add(jMenuTransferencias);
 
         jMenuRequerimientos.setText("Requerimientos");
-        jMenuRequerimientos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuRequerimientos.setFont(new java.awt.Font("Segoe UI Semibold", 0, 13)); // NOI18N
 
         jRadioButtonMenuItem59.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem59.setSelected(true);
@@ -887,7 +949,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
         Menu.add(jMenuRequerimientos);
 
         jMenuGuiasElectronicas.setText("Guias Electronicas");
-        jMenuGuiasElectronicas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuGuiasElectronicas.setFont(new java.awt.Font("Segoe UI Semibold", 0, 13)); // NOI18N
 
         jRadioButtonMenuItem69.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem69.setSelected(true);
@@ -902,7 +964,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
         Menu.add(jMenuGuiasElectronicas);
 
         jMenuConsultas.setText("Consultas");
-        jMenuConsultas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuConsultas.setFont(new java.awt.Font("Segoe UI Semibold", 0, 13)); // NOI18N
 
         jRadioButtonMenuItem80.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem80.setSelected(true);
@@ -950,7 +1012,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
         Menu.add(jMenuConsultas);
 
         jMenuProcesos.setText("Procesos");
-        jMenuProcesos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuProcesos.setFont(new java.awt.Font("Segoe UI Semibold", 0, 13)); // NOI18N
 
         jRadioButtonMenuItem71.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem71.setSelected(true);
@@ -1000,7 +1062,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
         Menu.add(jMenuProcesos);
 
         jMenuVentanas.setText("Ventanas");
-        jMenuVentanas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuVentanas.setFont(new java.awt.Font("Segoe UI Semibold", 0, 13)); // NOI18N
         jMenuVentanas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuVentanasActionPerformed(evt);
@@ -1110,6 +1172,66 @@ public class vistaPrincipal extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jButtonSalirSistemaActionPerformed
 
+    private void jRadioButtonMenuItem46ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem46ActionPerformed
+        // TODO add your handling code here:
+        InternalIngresos ventanaIngresos = new InternalIngresos();
+        abrirVentana(ventanaIngresos, "Ingresos");
+    }//GEN-LAST:event_jRadioButtonMenuItem46ActionPerformed
+
+    private void jRadioButtonMenuItem47ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem47ActionPerformed
+        // TODO add your handling code here:
+        InternalGuiasElectronicas ventanaGuiasElectronicas = new InternalGuiasElectronicas();
+        abrirVentana(ventanaGuiasElectronicas, "GuiasElectronicas");
+    }//GEN-LAST:event_jRadioButtonMenuItem47ActionPerformed
+
+    private void jRadioButtonMenuItem48ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem48ActionPerformed
+        // TODO add your handling code here:
+        InternalMantenimiento ventanaMantenimiento = new InternalMantenimiento();
+        abrirVentana(ventanaMantenimiento, "Mantenimiento de Ingresos");
+    }//GEN-LAST:event_jRadioButtonMenuItem48ActionPerformed
+
+    private void jRadioButtonMenuItem49ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem49ActionPerformed
+        // TODO add your handling code here:
+        InternalTipo_de_Ingreso ventanaTipo_de_Ingreso = new InternalTipo_de_Ingreso();
+        abrirVentana(ventanaTipo_de_Ingreso, "Tipo de Ingreso");
+    }//GEN-LAST:event_jRadioButtonMenuItem49ActionPerformed
+
+    private void jRadioButtonMenuItem50ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem50ActionPerformed
+        // TODO add your handling code here:
+        Internal_IngresoDetallado ventana_IngresoDetallado = new Internal_IngresoDetallado();
+        abrirVentana(ventana_IngresoDetallado, "Listado Ingreso Detallado");
+    }//GEN-LAST:event_jRadioButtonMenuItem50ActionPerformed
+
+    private void jRadioButtonMenuItem45ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem45ActionPerformed
+        // TODO add your handling code here:
+        InternalSalidas ventanaSalidas = new InternalSalidas();
+        abrirVentana(ventanaSalidas, "Salidas");
+    }//GEN-LAST:event_jRadioButtonMenuItem45ActionPerformed
+
+    private void jRadioButtonMenuItem51ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem51ActionPerformed
+        // TODO add your handling code here:
+        InternalOtros ventanaOtros = new InternalOtros();
+        abrirVentana(ventanaOtros, "Otros");
+    }//GEN-LAST:event_jRadioButtonMenuItem51ActionPerformed
+
+    private void jRadioButtonMenuItem52ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem52ActionPerformed
+        // TODO add your handling code here:
+        InternalMantenimientoSalida ventanaMantenimientoSalida = new InternalMantenimientoSalida();
+        abrirVentana(ventanaMantenimientoSalida, "Mantenimiento Salidas");
+    }//GEN-LAST:event_jRadioButtonMenuItem52ActionPerformed
+
+    private void jRadioButtonMenuItem53ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem53ActionPerformed
+        // TODO add your handling code here:
+        InternalSalidaDetallada ventanaSalidaDetallada = new InternalSalidaDetallada();
+        abrirVentana(ventanaSalidaDetallada, "Listado Salida Detallada");
+    }//GEN-LAST:event_jRadioButtonMenuItem53ActionPerformed
+
+    private void jRadioButtonMenuItem56ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem56ActionPerformed
+        // TODO add your handling code here:
+        InternalConsulta ventanaConsulta = new InternalConsulta();
+        abrirVentana(ventanaConsulta, "Consulta");
+    }//GEN-LAST:event_jRadioButtonMenuItem56ActionPerformed
+
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -1204,7 +1326,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu18;
     private javax.swing.JMenu jMenu19;
     private javax.swing.JMenu jMenu20;
-    private javax.swing.JMenu jMenuArchiovos;
+    private javax.swing.JMenu jMenuArchivos;
     private javax.swing.JMenu jMenuCaracteristicas;
     private javax.swing.JMenu jMenuConsultas;
     private javax.swing.JMenu jMenuConsumos;
@@ -1308,7 +1430,6 @@ public class vistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;
-    private javax.swing.JToolBar.Separator jSeparator4;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 }
