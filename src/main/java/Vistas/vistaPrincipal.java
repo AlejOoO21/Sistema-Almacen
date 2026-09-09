@@ -20,11 +20,31 @@ import Vistas.Ingresos.Frame_IngresoDetallado.Internal_IngresoDetallado;
 import Vistas.Ingresos.Frame_Ingresos.InternalIngresos;
 import Vistas.Ingresos.Frame_Mantenimiento.InternalMantenimiento;
 import Vistas.Ingresos.Frame_TipoIngreso.InternalTipo_de_Ingreso;
+import Vistas.Requerimientos.Frame_MantenimientoOrdenCompra.Frame_MantenimientoOrdenDeCompra;
+import Vistas.Requerimientos.Frame_MantenimientoOrdenMuestra.Internal_MantenimientoOrdenMuestra;
+import Vistas.Requerimientos.Frame_MantenimientoOrdenProduccion.Internal_MantenimientoOrdenProduccion;
+import Vistas.Requerimientos.Frame_OrdenDeCompra.Frame_OrdenDeCompra;
+import Vistas.Requerimientos.Frame_OrdenMuestra.Internal_OrdenMuestra;
+import Vistas.Requerimientos.Frame_OrdenProduccion.Internal_OrdenDeProduccion;
+import Vistas.Requerimientos.Frame_RQJefatura.Internal_RQcompraJefatura;
+import Vistas.Requerimientos.Frame_RQUsuario.Internal_RQcompraUsuario;
+import Vistas.Requerimientos.Frame_Reposicion.Internal_RequerimientoPorReposicion;
+import Vistas.Requerimientos.Frame_StockMinimo.Internal_RequerimientoPorStockMinimo;
 import Vistas.Salidas.Frame_Mantenimiento.InternalMantenimientoSalida;
 import Vistas.Salidas.Frame_Otros.InternalOtros;
 import Vistas.Salidas.Frame_SalidaDetallada.InternalSalidaDetallada;
 import Vistas.Salidas.Frame_Salidas.InternalSalidas;
 import Vistas.Transferencias.Frame_Consultas.InternalConsulta;
+import Vistas.Transferencias.Frame_Mantenimiento.Internal_Mantenimiento_Transferencias;
+import Vistas._Consultas.Frame_Ingresos.Internal_Ingresos;
+import Vistas._Consultas.Frame_Kardex.Internal_Kardex;
+import Vistas._Consultas.Frame_ReporteAntiguedad.Internal_Reporte_X_Antiguedad;
+import Vistas._Consultas.Frame_ReporteAntiguedad_6meses.Internal_Reporte_X_Antiguedad_6UltimosIngresos;
+import Vistas._Consultas.Frame_ReporteDeAuditoria.Internal_ReporteDeAuditoria;
+import Vistas._Consultas.Frame_Saldos.Internal_Saldos;
+import Vistas._Consultas.Frame_Salidas.Internal_Salidas;
+import Vistas._GuiasElectronicas.Frame_ConsultarGuiasElectronicas.Internal_ConsultarGuiasElectronicas;
+import Vistas._GuiasElectronicas.Frame_GenerarGuiasElectronicas.Internal_GenerarGuiasElectronicas;
 import java.util.LinkedList;
 import javax.swing.JInternalFrame;
 import javax.swing.JMenuItem;
@@ -343,7 +363,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        FONDO.add(jPanel2, java.awt.BorderLayout.LINE_START);
+        FONDO.add(jPanel2, java.awt.BorderLayout.WEST);
 
         javax.swing.GroupLayout jDesktopPanePantallasLayout = new javax.swing.GroupLayout(jDesktopPanePantallas);
         jDesktopPanePantallas.setLayout(jDesktopPanePantallasLayout);
@@ -886,6 +906,11 @@ public class vistaPrincipal extends javax.swing.JFrame {
         jRadioButtonMenuItem57.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem57.setSelected(true);
         jRadioButtonMenuItem57.setText("Mantenimiento");
+        jRadioButtonMenuItem57.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem57ActionPerformed(evt);
+            }
+        });
         jMenuTransferencias.add(jRadioButtonMenuItem57);
 
         Menu.add(jMenuTransferencias);
@@ -896,21 +921,41 @@ public class vistaPrincipal extends javax.swing.JFrame {
         jRadioButtonMenuItem59.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem59.setSelected(true);
         jRadioButtonMenuItem59.setText("Generar Orden de Muestra");
+        jRadioButtonMenuItem59.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem59ActionPerformed(evt);
+            }
+        });
         jMenuRequerimientos.add(jRadioButtonMenuItem59);
 
         jRadioButtonMenuItem60.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem60.setSelected(true);
         jRadioButtonMenuItem60.setText("Mantenimiento Orden de Muestra");
+        jRadioButtonMenuItem60.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem60ActionPerformed(evt);
+            }
+        });
         jMenuRequerimientos.add(jRadioButtonMenuItem60);
 
         jRadioButtonMenuItem61.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem61.setSelected(true);
         jRadioButtonMenuItem61.setText("Generar Orden de Produccion");
+        jRadioButtonMenuItem61.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem61ActionPerformed(evt);
+            }
+        });
         jMenuRequerimientos.add(jRadioButtonMenuItem61);
 
         jRadioButtonMenuItem62.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem62.setSelected(true);
         jRadioButtonMenuItem62.setText("Mantenimiento Orden de Produccion");
+        jRadioButtonMenuItem62.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem62ActionPerformed(evt);
+            }
+        });
         jMenuRequerimientos.add(jRadioButtonMenuItem62);
 
         jMenu19.setText("Generar desde OP.");
@@ -919,31 +964,61 @@ public class vistaPrincipal extends javax.swing.JFrame {
         jRadioButtonMenuItem63.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem63.setSelected(true);
         jRadioButtonMenuItem63.setText("Generar orden de compra");
+        jRadioButtonMenuItem63.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem63ActionPerformed(evt);
+            }
+        });
         jMenuRequerimientos.add(jRadioButtonMenuItem63);
 
         jRadioButtonMenuItem64.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem64.setSelected(true);
         jRadioButtonMenuItem64.setText("Mantenimiento Orden de Compra");
+        jRadioButtonMenuItem64.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem64ActionPerformed(evt);
+            }
+        });
         jMenuRequerimientos.add(jRadioButtonMenuItem64);
 
         jRadioButtonMenuItem65.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem65.setSelected(true);
         jRadioButtonMenuItem65.setText("Requerimiento por stock minimo");
+        jRadioButtonMenuItem65.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem65ActionPerformed(evt);
+            }
+        });
         jMenuRequerimientos.add(jRadioButtonMenuItem65);
 
         jRadioButtonMenuItem66.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem66.setSelected(true);
         jRadioButtonMenuItem66.setText("Requerimiento por Reposicion");
+        jRadioButtonMenuItem66.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem66ActionPerformed(evt);
+            }
+        });
         jMenuRequerimientos.add(jRadioButtonMenuItem66);
 
         jRadioButtonMenuItem67.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem67.setSelected(true);
         jRadioButtonMenuItem67.setText("Aprobacion de RQ Compra (Usuario)");
+        jRadioButtonMenuItem67.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem67ActionPerformed(evt);
+            }
+        });
         jMenuRequerimientos.add(jRadioButtonMenuItem67);
 
         jRadioButtonMenuItem68.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem68.setSelected(true);
         jRadioButtonMenuItem68.setText("Aprobacion de RQ Compra (Jefatura)");
+        jRadioButtonMenuItem68.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem68ActionPerformed(evt);
+            }
+        });
         jMenuRequerimientos.add(jRadioButtonMenuItem68);
 
         Menu.add(jMenuRequerimientos);
@@ -954,11 +1029,21 @@ public class vistaPrincipal extends javax.swing.JFrame {
         jRadioButtonMenuItem69.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem69.setSelected(true);
         jRadioButtonMenuItem69.setText("Generar Guias Electronicas");
+        jRadioButtonMenuItem69.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem69ActionPerformed(evt);
+            }
+        });
         jMenuGuiasElectronicas.add(jRadioButtonMenuItem69);
 
         jRadioButtonMenuItem70.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem70.setSelected(true);
         jRadioButtonMenuItem70.setText("Consultar Guias Electronicas");
+        jRadioButtonMenuItem70.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem70ActionPerformed(evt);
+            }
+        });
         jMenuGuiasElectronicas.add(jRadioButtonMenuItem70);
 
         Menu.add(jMenuGuiasElectronicas);
@@ -969,21 +1054,41 @@ public class vistaPrincipal extends javax.swing.JFrame {
         jRadioButtonMenuItem80.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem80.setSelected(true);
         jRadioButtonMenuItem80.setText("Kardex");
+        jRadioButtonMenuItem80.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem80ActionPerformed(evt);
+            }
+        });
         jMenuConsultas.add(jRadioButtonMenuItem80);
 
         jRadioButtonMenuItem81.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem81.setSelected(true);
         jRadioButtonMenuItem81.setText("Saldos");
+        jRadioButtonMenuItem81.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem81ActionPerformed(evt);
+            }
+        });
         jMenuConsultas.add(jRadioButtonMenuItem81);
 
         jRadioButtonMenuItem82.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem82.setSelected(true);
         jRadioButtonMenuItem82.setText("Ingresos");
+        jRadioButtonMenuItem82.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem82ActionPerformed(evt);
+            }
+        });
         jMenuConsultas.add(jRadioButtonMenuItem82);
 
         jRadioButtonMenuItem83.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem83.setSelected(true);
         jRadioButtonMenuItem83.setText("Salidas");
+        jRadioButtonMenuItem83.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem83ActionPerformed(evt);
+            }
+        });
         jMenuConsultas.add(jRadioButtonMenuItem83);
 
         jMenu20.setText("Movimientos");
@@ -1002,11 +1107,21 @@ public class vistaPrincipal extends javax.swing.JFrame {
         jRadioButtonMenuItem85.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem85.setSelected(true);
         jRadioButtonMenuItem85.setText("Reporte x Antiguedad 6 Ultimos Ingresos");
+        jRadioButtonMenuItem85.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem85ActionPerformed(evt);
+            }
+        });
         jMenuConsultas.add(jRadioButtonMenuItem85);
 
         jRadioButtonMenuItem86.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButtonMenuItem86.setSelected(true);
         jRadioButtonMenuItem86.setText("Reporte de Auditoria");
+        jRadioButtonMenuItem86.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem86ActionPerformed(evt);
+            }
+        });
         jMenuConsultas.add(jRadioButtonMenuItem86);
 
         Menu.add(jMenuConsultas);
@@ -1076,6 +1191,8 @@ public class vistaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jRadioButtonMenuItem84ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem84ActionPerformed
+        Internal_Reporte_X_Antiguedad ventanaReporteAntiguedad = new Internal_Reporte_X_Antiguedad();
+        abrirVentana(ventanaReporteAntiguedad, "Reporte por Antigüedad");
     }//GEN-LAST:event_jRadioButtonMenuItem84ActionPerformed
 
     private void jMenuVentanasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuVentanasActionPerformed
@@ -1217,7 +1334,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
     private void jRadioButtonMenuItem52ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem52ActionPerformed
         // TODO add your handling code here:
         InternalMantenimientoSalida ventanaMantenimientoSalida = new InternalMantenimientoSalida();
-        abrirVentana(ventanaMantenimientoSalida, "Mantenimiento Salidas");
+        abrirVentana(ventanaMantenimientoSalida, "Mantenimiento de Salidas");
     }//GEN-LAST:event_jRadioButtonMenuItem52ActionPerformed
 
     private void jRadioButtonMenuItem53ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem53ActionPerformed
@@ -1231,6 +1348,120 @@ public class vistaPrincipal extends javax.swing.JFrame {
         InternalConsulta ventanaConsulta = new InternalConsulta();
         abrirVentana(ventanaConsulta, "Consulta");
     }//GEN-LAST:event_jRadioButtonMenuItem56ActionPerformed
+
+    private void jRadioButtonMenuItem57ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem57ActionPerformed
+        // TODO add your handling code here:
+        Internal_Mantenimiento_Transferencias ventana_Mantenimiento_Transferencias = new Internal_Mantenimiento_Transferencias();
+        abrirVentana(ventana_Mantenimiento_Transferencias, "Mantenimiento de Transferencia");
+    }//GEN-LAST:event_jRadioButtonMenuItem57ActionPerformed
+
+    private void jRadioButtonMenuItem59ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem59ActionPerformed
+        // TODO add your handling code here:
+        Internal_OrdenMuestra ventanaOrdenMuestra = new Internal_OrdenMuestra();
+        abrirVentana(ventanaOrdenMuestra, "Órdenes de Muestra");
+    }//GEN-LAST:event_jRadioButtonMenuItem59ActionPerformed
+
+    private void jRadioButtonMenuItem60ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem60ActionPerformed
+        // TODO add your handling code here:
+        Internal_MantenimientoOrdenMuestra ventanaMantenimientoOrden = new Internal_MantenimientoOrdenMuestra();
+        abrirVentana(ventanaMantenimientoOrden, "Mantenimiento - Órdenes de Muestra");
+    }//GEN-LAST:event_jRadioButtonMenuItem60ActionPerformed
+
+    private void jRadioButtonMenuItem61ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem61ActionPerformed
+        // TODO add your handling code here:
+        Internal_OrdenDeProduccion ventanaOrdenProduccion = new Internal_OrdenDeProduccion();
+        abrirVentana(ventanaOrdenProduccion, "Órdenes de Producción");
+    }//GEN-LAST:event_jRadioButtonMenuItem61ActionPerformed
+
+    private void jRadioButtonMenuItem62ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem62ActionPerformed
+        // TODO add your handling code here:
+        Internal_MantenimientoOrdenProduccion ventanaMantenimientoProduccion = new Internal_MantenimientoOrdenProduccion();
+        abrirVentana(ventanaMantenimientoProduccion, "Mantenimiento - Órdenes de Producción");
+    }//GEN-LAST:event_jRadioButtonMenuItem62ActionPerformed
+
+    private void jRadioButtonMenuItem63ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem63ActionPerformed
+        // TODO add your handling code here:
+        Frame_OrdenDeCompra ventanaOrdenCompra = new Frame_OrdenDeCompra();
+        abrirVentana(ventanaOrdenCompra, "Órdenes de Compra");
+    }//GEN-LAST:event_jRadioButtonMenuItem63ActionPerformed
+
+    private void jRadioButtonMenuItem64ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem64ActionPerformed
+        // TODO add your handling code here:
+        Frame_MantenimientoOrdenDeCompra ventanaMantenimientoCompra = new Frame_MantenimientoOrdenDeCompra();
+        abrirVentana(ventanaMantenimientoCompra, "Mantenimiento - Órdenes de Compra");
+    }//GEN-LAST:event_jRadioButtonMenuItem64ActionPerformed
+
+    private void jRadioButtonMenuItem65ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem65ActionPerformed
+        // TODO add your handling code here:
+        Internal_RequerimientoPorStockMinimo ventanaStockMinimo = new Internal_RequerimientoPorStockMinimo();
+        abrirVentana(ventanaStockMinimo, "Requerimientos por Stock Mínimo");
+    }//GEN-LAST:event_jRadioButtonMenuItem65ActionPerformed
+
+    private void jRadioButtonMenuItem66ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem66ActionPerformed
+        // TODO add your handling code here:
+        Internal_RequerimientoPorReposicion ventanaReposicion = new Internal_RequerimientoPorReposicion();
+        abrirVentana(ventanaReposicion, "Requerimientos por Reposición");
+    }//GEN-LAST:event_jRadioButtonMenuItem66ActionPerformed
+
+    private void jRadioButtonMenuItem67ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem67ActionPerformed
+        // TODO add your handling code here:
+        Internal_RQcompraUsuario ventanaRQCompraUsuario = new Internal_RQcompraUsuario();
+        abrirVentana(ventanaRQCompraUsuario, "Aprobacion de RQ Compra - Usuario");
+    }//GEN-LAST:event_jRadioButtonMenuItem67ActionPerformed
+
+    private void jRadioButtonMenuItem68ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem68ActionPerformed
+        // TODO add your handling code here:
+        Internal_RQcompraJefatura ventanaRQCompraJefatura = new Internal_RQcompraJefatura();
+        abrirVentana(ventanaRQCompraJefatura, "Aprobacion de RQ Compra - Jefatura");
+    }//GEN-LAST:event_jRadioButtonMenuItem68ActionPerformed
+
+    private void jRadioButtonMenuItem69ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem69ActionPerformed
+        // TODO add your handling code here:
+        Internal_GenerarGuiasElectronicas ventanaGuiasElectronicas = new Internal_GenerarGuiasElectronicas();
+        abrirVentana(ventanaGuiasElectronicas, "Generar Guías Electrónicas");
+    }//GEN-LAST:event_jRadioButtonMenuItem69ActionPerformed
+
+    private void jRadioButtonMenuItem70ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem70ActionPerformed
+        // TODO add your handling code here:
+        Internal_ConsultarGuiasElectronicas ventanaConsultarGuias = new Internal_ConsultarGuiasElectronicas();
+        abrirVentana(ventanaConsultarGuias, "Consultar Guías Electrónicas");
+    }//GEN-LAST:event_jRadioButtonMenuItem70ActionPerformed
+
+    private void jRadioButtonMenuItem80ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem80ActionPerformed
+        // TODO add your handling code here:
+        Internal_Kardex ventanaKardex = new Internal_Kardex();
+        abrirVentana(ventanaKardex, "Consulta de Kardex");
+    }//GEN-LAST:event_jRadioButtonMenuItem80ActionPerformed
+
+    private void jRadioButtonMenuItem81ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem81ActionPerformed
+        // TODO add your handling code here:
+        Internal_Saldos ventanaSaldos = new Internal_Saldos();
+        abrirVentana(ventanaSaldos, "Consulta de Saldos");
+    }//GEN-LAST:event_jRadioButtonMenuItem81ActionPerformed
+
+    private void jRadioButtonMenuItem82ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem82ActionPerformed
+        // TODO add your handling code here:
+        Internal_Ingresos ventanaIngresos = new Internal_Ingresos();
+        abrirVentana(ventanaIngresos, "Control de Ingresos");
+    }//GEN-LAST:event_jRadioButtonMenuItem82ActionPerformed
+
+    private void jRadioButtonMenuItem83ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem83ActionPerformed
+        // TODO add your handling code here:
+        Internal_Salidas ventanaSalidas = new Internal_Salidas();
+        abrirVentana(ventanaSalidas, "Control de Salidas");
+    }//GEN-LAST:event_jRadioButtonMenuItem83ActionPerformed
+
+    private void jRadioButtonMenuItem85ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem85ActionPerformed
+        // TODO add your handling code here:
+        Internal_Reporte_X_Antiguedad_6UltimosIngresos ventanaReporte6Ingresos = new Internal_Reporte_X_Antiguedad_6UltimosIngresos();
+        abrirVentana(ventanaReporte6Ingresos, "Reporte por Antigüedad - 6 Últimos Ingresos");
+    }//GEN-LAST:event_jRadioButtonMenuItem85ActionPerformed
+
+    private void jRadioButtonMenuItem86ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem86ActionPerformed
+        // TODO add your handling code here:
+            Internal_ReporteDeAuditoria ventanaReporteAuditoria = new Internal_ReporteDeAuditoria();
+        abrirVentana(ventanaReporteAuditoria, "Reporte de Auditoría");
+    }//GEN-LAST:event_jRadioButtonMenuItem86ActionPerformed
 
     public static void main(String args[]) {
         try {
@@ -1247,43 +1478,73 @@ public class vistaPrincipal extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(() -> new vistaPrincipal().setVisible(true));
     }
 
-    private void abrirVentana(JInternalFrame nuevaVentana, String titulo) {
-        for (JInternalFrame v : ventanasAbiertas) {
-            if (v.getClass().equals(nuevaVentana.getClass())) {
-                v.toFront();
-                try {
-                    v.setSelected(true);
-                } catch (Exception e) {
-                }
-                return;
+        private void abrirVentana(JInternalFrame nuevaVentana, String titulo) {
+    // 1. Control para no duplicar ventanas abiertas
+    for (JInternalFrame v : ventanasAbiertas) {
+        if (v.getClass().equals(nuevaVentana.getClass())) {
+            v.toFront();
+            try {
+                v.setSelected(true);
+            } catch (Exception e) {
             }
+            return;
         }
+    }
 
+    // 2. Control de máximo de ventanas
         if (ventanasAbiertas.size() >= MAX_VENTANAS) {
             JInternalFrame ventanaMasAntigua = ventanasAbiertas.removeFirst();
-            ventanaMasAntigua.dispose();
             jDesktopPanePantallas.remove(ventanaMasAntigua);
+            ventanaMasAntigua.dispose();
+    }
+
+    // 3. Configuración inicial de la ventana
+            nuevaVentana.setTitle(titulo);
+            nuevaVentana.setClosable(true);
+            nuevaVentana.setMaximizable(true);
+            nuevaVentana.setIconifiable(true);
+
+    // 4. Limite para no traspasar los botones de la izquierda
+            final int X_MINIMA = 5; // Ancho de tu panel lateral en px
+            nuevaVentana.setLocation(X_MINIMA, 10);
+
+            nuevaVentana.addComponentListener(new java.awt.event.ComponentAdapter() {
+            @Override
+            public void componentMoved(java.awt.event.ComponentEvent evt) {
+            int x = nuevaVentana.getX();
+            int y = nuevaVentana.getY();
+            boolean corregir = false;
+
+            if (x < X_MINIMA) {
+                x = X_MINIMA;
+                corregir = true;
+            }
+            if (y < 0) {
+                y = 0;
+                corregir = true;
+            }
+
+            if (corregir) {
+                nuevaVentana.setLocation(x, y);
+            }
         }
+    });
 
-        nuevaVentana.setTitle(titulo);
-        nuevaVentana.setClosable(true);
-        nuevaVentana.setMaximizable(true);
-        nuevaVentana.setIconifiable(true);
-
-        nuevaVentana.addInternalFrameListener(new javax.swing.event.InternalFrameAdapter() {
+    // 5. Escuchador de cierre de ventana
+            nuevaVentana.addInternalFrameListener(new javax.swing.event.InternalFrameAdapter() {
             @Override
             public void internalFrameClosed(javax.swing.event.InternalFrameEvent e) {
-                ventanasAbiertas.remove(nuevaVentana);
-                actualizarMenuVentanas();
-            }
-        });
+            ventanasAbiertas.remove(nuevaVentana);
+            actualizarMenuVentanas();
+        }
+    });
 
         ventanasAbiertas.add(nuevaVentana);
         jDesktopPanePantallas.add(nuevaVentana);
         nuevaVentana.setVisible(true);
 
         actualizarMenuVentanas();
-    }
+}
 
     private void actualizarMenuVentanas() {
         jMenuVentanas.removeAll();
