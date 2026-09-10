@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
@@ -13,110 +14,167 @@ import javax.swing.table.TableCellRenderer;
 
 public class InternalArchivoAlmacenes extends javax.swing.JInternalFrame {
 
-    public InternalArchivoAlmacenes() {
+public InternalArchivoAlmacenes() {
         initComponents();
+        
         // Deshabilitar la opción de maximizar la ventana
         this.setMaximizable(false);
         this.setResizable(false);
+        
         // Forzar la eliminación del botón de maximizar en Look & Feel Metal/Windows
-javax.swing.plaf.InternalFrameUI ui = this.getUI();
-if (ui instanceof javax.swing.plaf.basic.BasicInternalFrameUI) {
-    javax.swing.plaf.basic.BasicInternalFrameUI basicUi = (javax.swing.plaf.basic.BasicInternalFrameUI) ui;
-    javax.swing.JComponent titlePane = basicUi.getNorthPane();
-    
-    if (titlePane != null) {
-        for (java.awt.Component c : titlePane.getComponents()) {
-            // Evaluamos la propiedad accesible del componente
-            if (c instanceof javax.swing.AbstractButton) {
-                javax.swing.AbstractButton btn = (javax.swing.AbstractButton) c;
-                // En Metal UI, el botón verde responde a esta propiedad de acción
-                if ("Maximize".equals(btn.getAccessibleContext().getAccessibleName()) 
-                        || (btn.getAction() != null && btn.getAction().toString().contains("Maximize"))) {
-                    btn.setPreferredSize(new java.awt.Dimension(0, 0));
-                    btn.setVisible(false);
+        javax.swing.plaf.InternalFrameUI ui = this.getUI();
+        if (ui instanceof javax.swing.plaf.basic.BasicInternalFrameUI) {
+            javax.swing.plaf.basic.BasicInternalFrameUI basicUi = (javax.swing.plaf.basic.BasicInternalFrameUI) ui;
+            javax.swing.JComponent titlePane = basicUi.getNorthPane();
+            
+            if (titlePane != null) {
+                for (java.awt.Component c : titlePane.getComponents()) {
+                    // Evaluamos la propiedad accesible del componente
+                    if (c instanceof javax.swing.AbstractButton) {
+                        javax.swing.AbstractButton btn = (javax.swing.AbstractButton) c;
+                        // En Metal UI, el botón verde responde a esta propiedad de acción
+                        if ("Maximize".equals(btn.getAccessibleContext().getAccessibleName()) 
+                                || (btn.getAction() != null && btn.getAction().toString().contains("Maximize"))) {
+                            btn.setPreferredSize(new java.awt.Dimension(0, 0));
+                            btn.setVisible(false);
+                        }
+                    }
                 }
+                titlePane.revalidate();
+                titlePane.repaint();
             }
         }
-        titlePane.revalidate();
-        titlePane.repaint();
-    }
-}
-        // Carga la tabla al abrir el internal frame
+        
+        // Carga la tabla de almacenes al abrir el internal frame
         listarAlmacenes();
+        
         // Cargar datos desde la sesión
         cargarDatosSesion();
-}
+        
+        // Carga la tabla de documentos de forma fija e independiente
+        listarDocumentos();
+    }
     
     private void cargarDatosSesion() {
     jLabelUsuario.setText(Conect.Sesion.usuarioActivo);
     jLabelFecha.setText(Conect.Sesion.fechaActiva);
 }
-    
     public void listarAlmacenes() {
         DefaultTableModel modelo = new DefaultTableModel() {
-        @Override
-        public boolean isCellEditable(int row, int column) {
-            return false; // Mantiene la tabla no editable
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+
+        modelo.addColumn("Código");
+        modelo.addColumn("Almacenes");
+        modelo.addColumn("Abreviado");
+        modelo.addColumn("Tipo Kardéx");
+
+        String sql = "SELECT codigo_almacen, nombre_almacenes, abreviado_almacen, tipo_kardex FROM almacenes";
+
+        try (Connection cn = conexion.conectar();
+             PreparedStatement ps = cn.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                Object[] fila = new Object[4];
+                fila[0] = rs.getString("codigo_almacen");
+                fila[1] = rs.getString("nombre_almacenes");
+                fila[2] = rs.getString("abreviado_almacen");
+                fila[3] = rs.getString("tipo_kardex");
+                modelo.addRow(fila);
+            }
+
+            jTableAlmacenes.setModel(modelo);
+            jTableAlmacenes.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+            ajustarAnchoColumnas(jTableAlmacenes);
+
+        } catch (SQLException e) {
+            System.err.println("Error al cargar la tabla almacenes: " + e.getMessage());
         }
-    };
+    }
+    
+    public void listarDocumentos() {
+        DefaultTableModel modelo = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
 
-    modelo.addColumn("Código");
-    modelo.addColumn("Almacenes");
-    modelo.addColumn("Abreviado");
-    modelo.addColumn("Tipo Kardéx");
+        // Encabezados de tu tabla
+        modelo.addColumn("Tipo Doc.");
+        modelo.addColumn("Guía Abreviada");
+        modelo.addColumn("Nro. Doc.");
+        modelo.addColumn("Nro. Doc Ini");
 
-    String sql = "SELECT codigo_almacen, nombre_almacenes, abreviado_almacen, tipo_kardex FROM almacenes";
+        // Consulta SQL que trae todas las series de documentos activas
+        String sql = "SELECT td.codigo_doc, td.nombre_doc, sd.serie, "
+                   + "LPAD(sd.numero_inicial, sd.longitud_correlativo, '0') AS nro_doc_ini "
+                   + "FROM series_documento sd "
+                   + "INNER JOIN tipos_documento td ON sd.id_tipo_doc = td.id_tipo_doc "
+                   + "WHERE sd.es_activo = TRUE";
 
-    try (Connection cn = conexion.conectar();
-         PreparedStatement ps = cn.prepareStatement(sql);
-         ResultSet rs = ps.executeQuery()) {
+        try (Connection cn = conexion.conectar();
+             PreparedStatement ps = cn.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
 
-        while (rs.next()) {
-            Object[] fila = new Object[4];
-            fila[0] = rs.getString("codigo_almacen");
-            fila[1] = rs.getString("nombre_almacenes");
-            fila[2] = rs.getString("abreviado_almacen");
-            fila[3] = rs.getString("tipo_kardex");
-            modelo.addRow(fila);
+            while (rs.next()) {
+                Object[] fila = new Object[4];
+                fila[0] = rs.getString("codigo_doc");
+                fila[1] = rs.getString("nombre_doc");
+                fila[2] = rs.getString("serie");
+                fila[3] = rs.getString("nro_doc_ini");
+                modelo.addRow(fila);
+            }
+
+            jTableDocuments.setModel(modelo);
+
+            // Inhabilitar totalmente la interacción para que sea solo de lectura/visualización
+            jTableDocuments.setRowSelectionAllowed(false);
+            jTableDocuments.setColumnSelectionAllowed(false);
+            jTableDocuments.setCellSelectionEnabled(false);
+            jTableDocuments.getTableHeader().setReorderingAllowed(false);
+            jTableDocuments.setFocusable(false);
+
+            jTableDocuments.revalidate();
+            jTableDocuments.repaint();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, 
+                "Error al cargar la tabla de documentos: " + e.getMessage(), 
+                "Error de Conexión", 
+                JOptionPane.ERROR_MESSAGE);
         }
+    }
 
-        jTableAlmacenes.setModel(modelo);
+        // Método auxiliar para calcular y aplicar el ancho óptimo
+        private void ajustarAnchoColumnas(JTable tabla) {
+            for (int col = 0; col < tabla.getColumnCount(); col++) {
+            int anchoMaximo = 0;
 
-        // 1. Configurar auto-resizing para que ocupe el ancho del contenedor si sobra espacio
-        jTableAlmacenes.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+            // Evaluar el ancho del título de la columna (Header)
+            Object valorHeader = tabla.getColumnModel().getColumn(col).getHeaderValue();
+            if (valorHeader != null) {
+                TableCellRenderer headerRenderer = tabla.getTableHeader().getDefaultRenderer();
+                Component compHeader = headerRenderer.getTableCellRendererComponent(tabla, valorHeader, false, false, -1, col);
+                anchoMaximo = Math.max(compHeader.getPreferredSize().width + 15, anchoMaximo);
+            }
 
-        // 2. Ajustar el ancho de cada columna según el contenido y el título
-        ajustarAnchoColumnas(jTableAlmacenes);
+            // Evaluar el ancho del contenido de cada celda en la columna
+            for (int row = 0; row < tabla.getRowCount(); row++) {
+                TableCellRenderer cellRenderer = tabla.getCellRenderer(row, col);
+                Component compCelda = tabla.prepareRenderer(cellRenderer, row, col);
+                anchoMaximo = Math.max(compCelda.getPreferredSize().width + 15, anchoMaximo);
+            }
 
-    } catch (SQLException e) {
-        System.err.println("Error al cargar la tabla almacenes: " + e.getMessage());
+            // Asignar el ancho preferido
+            tabla.getColumnModel().getColumn(col).setPreferredWidth(anchoMaximo);
     }
 }
-
-// Método auxiliar para calcular y aplicar el ancho óptimo
-private void ajustarAnchoColumnas(JTable tabla) {
-    for (int col = 0; col < tabla.getColumnCount(); col++) {
-        int anchoMaximo = 0;
-
-        // Evaluar el ancho del título de la columna (Header)
-        Object valorHeader = tabla.getColumnModel().getColumn(col).getHeaderValue();
-        if (valorHeader != null) {
-            TableCellRenderer headerRenderer = tabla.getTableHeader().getDefaultRenderer();
-            Component compHeader = headerRenderer.getTableCellRendererComponent(tabla, valorHeader, false, false, -1, col);
-            anchoMaximo = Math.max(compHeader.getPreferredSize().width + 15, anchoMaximo);
-        }
-
-        // Evaluar el ancho del contenido de cada celda en la columna
-        for (int row = 0; row < tabla.getRowCount(); row++) {
-            TableCellRenderer cellRenderer = tabla.getCellRenderer(row, col);
-            Component compCelda = tabla.prepareRenderer(cellRenderer, row, col);
-            anchoMaximo = Math.max(compCelda.getPreferredSize().width + 15, anchoMaximo);
-        }
-
-        // Asignar el ancho preferido
-        tabla.getColumnModel().getColumn(col).setPreferredWidth(anchoMaximo);
-    }
-}
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -131,7 +189,7 @@ private void ajustarAnchoColumnas(JTable tabla) {
         jLabel2 = new javax.swing.JLabel();
         jLabelFecha = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        jTableDocuments = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
         jInternalFrame1 = new javax.swing.JInternalFrame();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -227,20 +285,28 @@ private void ajustarAnchoColumnas(JTable tabla) {
                 .addGap(24, 24, 24))
         );
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        jTableDocuments.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Almacenes", "Tipo Doc.", "Nro. Doc.", "Nro. Doc Ini", "Nro. Doc Etc"
+                "Tipo Doc.", "Guía Abreviada", "Nro. Doc.", "Nro. Doc Ini"
             }
-        ));
-        jTable3.setRowHeight(24);
-        // 1. Obtener el encabezado de jTable3
-        javax.swing.table.JTableHeader header = jTable3.getTableHeader();
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTableDocuments.setRowHeight(24);
+        // 1. Obtener el encabezado de jTableDocuments
+        javax.swing.table.JTableHeader header = jTableDocuments.getTableHeader();
 
         // 2. Aplicar el renderer al encabezado
         header.setDefaultRenderer(new javax.swing.table.DefaultTableCellRenderer() {
@@ -262,7 +328,18 @@ private void ajustarAnchoColumnas(JTable tabla) {
 
         // 3. Fondo blanco para la zona vacía del jScrollPane6
         jScrollPane6.getViewport().setBackground(java.awt.Color.WHITE);
-        jScrollPane6.setViewportView(jTable3);
+        jTableDocuments.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableDocumentsMouseClicked(evt);
+            }
+        });
+        jScrollPane6.setViewportView(jTableDocuments);
+        if (jTableDocuments.getColumnModel().getColumnCount() > 0) {
+            jTableDocuments.getColumnModel().getColumn(0).setResizable(false);
+            jTableDocuments.getColumnModel().getColumn(1).setResizable(false);
+            jTableDocuments.getColumnModel().getColumn(2).setResizable(false);
+            jTableDocuments.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         jLabel6.setBackground(new java.awt.Color(30, 41, 59));
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -403,6 +480,11 @@ private void ajustarAnchoColumnas(JTable tabla) {
                 return label;
             }
         });
+        jTableAlmacenes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableAlmacenesMouseClicked(evt);
+            }
+        });
         jTableAlmacenes.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentHidden(java.awt.event.ComponentEvent evt) {
                 jTableAlmacenesComponentHidden(evt);
@@ -456,9 +538,9 @@ private void ajustarAnchoColumnas(JTable tabla) {
                     .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
-                    .addComponent(jScrollPane6))
-                .addContainerGap())
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 582, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(26, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -482,11 +564,36 @@ private void ajustarAnchoColumnas(JTable tabla) {
 
     private void jTableAlmacenesComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jTableAlmacenesComponentHidden
         // TODO add your handling code here:
+        //NO SE USA
     }//GEN-LAST:event_jTableAlmacenesComponentHidden
 
     private void jTableAlmacenes1ComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jTableAlmacenes1ComponentHidden
         // TODO add your handling code here:
+        //NO SE USA
     }//GEN-LAST:event_jTableAlmacenes1ComponentHidden
+
+    private void jTableAlmacenesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableAlmacenesMouseClicked
+        // TODO add your handling code here:
+        if (evt.getClickCount() == 2 && evt.getButton() == java.awt.event.MouseEvent.BUTTON1) {
+        int filaSeleccionada = jTableAlmacenes.getSelectedRow();
+        if (filaSeleccionada != -1) {
+            // Obtiene el id_almacen de la columna 0 (asegúrate de que el ID esté en esa columna)
+            int idAlmacen = Integer.parseInt(jTableAlmacenes.getValueAt(filaSeleccionada, 0).toString());
+            
+            // Abre la ventana modal
+            DetalleAlmacenDialog dialog = new DetalleAlmacenDialog(null, true, idAlmacen);
+            dialog.setVisible(true);
+            
+            // Al cerrarse el dialog, recarga la tabla para reflejar los cambios
+            listarAlmacenes();
+        }
+    }
+    }//GEN-LAST:event_jTableAlmacenesMouseClicked
+
+    private void jTableDocumentsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableDocumentsMouseClicked
+        // TODO add your handling code here:
+        //NO SE USA
+    }//GEN-LAST:event_jTableDocumentsMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -507,8 +614,8 @@ private void ajustarAnchoColumnas(JTable tabla) {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
     private javax.swing.JTable jTableAlmacenes;
     private javax.swing.JTable jTableAlmacenes1;
+    private javax.swing.JTable jTableDocuments;
     // End of variables declaration//GEN-END:variables
 }
