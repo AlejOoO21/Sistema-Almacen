@@ -25,6 +25,9 @@ public class UsuarioDAO {
                 System.out.println("Usuario encontrado en BD: " + rs.getString("nomUsuarios"));
                 // Opcional: imprimir rol u otro campo de la tabla
                 // System.out.println("Rol: " + rs.getString("rol")); 
+                // Guardar el nombre del usuario logueado en la sesión
+                Conect.Sesion.usuarioActivo = rs.getString("nomUsuarios");// Guardar el nombre del usuario logueado en la sesión
+                Conect.Sesion.usuarioActivo = rs.getString("nomUsuarios");
                 return true;
             } else {
                 // Si entra aquí, las credenciales enviadas no coinciden
