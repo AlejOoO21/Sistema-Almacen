@@ -30,10 +30,10 @@ public class DetalleAlmacenDialog extends javax.swing.JDialog {
         this.setLocationRelativeTo(parent);
         
         // Configurar los campos como no editables
-        jTextField2.setEditable(false); // Empresa
+        jTextField_NombreDeLaEmpresa.setEditable(false); // Empresa
         jTextFieldAlmaceSelec.setEditable(false);
         jTextFieldFechaCreaAlmac.setEditable(false);
-        jTextFieldUsuarioModAlm.setEditable(false);
+        jTextField_Usuario.setEditable(false);
         jTextFieldModificaFechaAlmac.setEditable(false);
         
         cargarDetalleAlmacen();
@@ -51,7 +51,7 @@ public class DetalleAlmacenDialog extends javax.swing.JDialog {
         ResultSet rs = ps.executeQuery();
 
         if (rs.next()) {
-            jTextField2.setText("Empresa Principal"); 
+            jTextField_NombreDeLaEmpresa.setText("Empresa Principal"); 
             jTextFieldAlmaceSelec.setText(rs.getString("nombre_almacenes"));
             
             // Formateador para mostrar solo la fecha (día/mes/año)
@@ -69,7 +69,7 @@ public class DetalleAlmacenDialog extends javax.swing.JDialog {
             String usuarioMod = rs.getString("usuario_modificacion_almacen");
             java.sql.Timestamp fechaModTS = rs.getTimestamp("fecha_modificacion_almacen");
             
-            jTextFieldUsuarioModAlm.setText(usuarioMod != null ? usuarioMod : "Sin modificaciones");
+            jTextField_Usuario.setText(usuarioMod != null ? usuarioMod : "Sin modificaciones");
             
             if (fechaModTS != null) {
                 jTextFieldModificaFechaAlmac.setText(sdf.format(fechaModTS));
@@ -126,33 +126,112 @@ public class DetalleAlmacenDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel7 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jComboBoxEstadoAlmacen = new javax.swing.JComboBox<>();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         jButtonAceptar = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jTextFieldUsuarioModAlm = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextFieldAlmaceSelec = new javax.swing.JTextField();
+        jTextField_NombreDeLaEmpresa = new javax.swing.JTextField();
+        jLabel_Empresa = new javax.swing.JLabel();
+        jLabel_Almacen = new javax.swing.JLabel();
         jTextFieldFechaCreaAlmac = new javax.swing.JTextField();
+        jTextField_Usuario = new javax.swing.JTextField();
+        jLabel_UsuarioModificado = new javax.swing.JLabel();
+        jLabel_UltimaVezModificado = new javax.swing.JLabel();
         jTextFieldModificaFechaAlmac = new javax.swing.JTextField();
+        jLabel_Estado = new javax.swing.JLabel();
+        jTextFieldAlmaceSelec = new javax.swing.JTextField();
+        jLabel_FechadeCreacio = new javax.swing.JLabel();
+        jComboBoxEstadoAlmacen = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
-        jLabel7.setText("Empresa: ");
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
-        jLabel9.setText("Almacén: ");
+        jPanel2.setBackground(new java.awt.Color(30, 41, 59));
 
-        jLabel10.setText("Usuario Modifica: ");
+        jButtonAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/CHECK.png"))); // NOI18N
+        jButtonAceptar.setText("ACEPTAR");
+        jButtonAceptar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonAceptar.setIconTextGap(1);
+        jButtonAceptar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jButtonAceptar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAceptarActionPerformed(evt);
+            }
+        });
 
-        jLabel11.setText("Ultima vez modificado: ");
+        jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/DISCHECK.png"))); // NOI18N
+        jButtonCancelar.setText("CANCELAR");
+        jButtonCancelar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonCancelar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jButtonCancelar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelarActionPerformed(evt);
+            }
+        });
 
-        jLabel12.setText("Estado: ");
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButtonCancelar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButtonAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonCancelar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTextField_NombreDeLaEmpresa.setEditable(false);
+        jTextField_NombreDeLaEmpresa.setText("Nombre de la empresa");
+
+        jLabel_Empresa.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel_Empresa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel_Empresa.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel_Empresa.setText("Empresa:");
+
+        jLabel_Almacen.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel_Almacen.setText("Almacén: ");
+
+        jTextFieldFechaCreaAlmac.setEditable(false);
+
+        jTextField_Usuario.setEditable(false);
+        jTextField_Usuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField_UsuarioActionPerformed(evt);
+            }
+        });
+
+        jLabel_UsuarioModificado.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel_UsuarioModificado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel_UsuarioModificado.setText("Usuario Modifica: ");
+
+        jLabel_UltimaVezModificado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel_UltimaVezModificado.setText("Ultima vez modificado: ");
+
+        jTextFieldModificaFechaAlmac.setEditable(false);
+
+        jLabel_Estado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel_Estado.setText("Estado: ");
+
+        jTextFieldAlmaceSelec.setEditable(false);
+
+        jLabel_FechadeCreacio.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel_FechadeCreacio.setText("Fecha de Creación:");
 
         jComboBoxEstadoAlmacen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
         jComboBoxEstadoAlmacen.addActionListener(new java.awt.event.ActionListener() {
@@ -161,112 +240,81 @@ public class DetalleAlmacenDialog extends javax.swing.JDialog {
             }
         });
 
-        jButtonAceptar.setText("Aceptar");
-        jButtonAceptar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAceptarActionPerformed(evt);
-            }
-        });
-
-        jButtonCancelar.setText("Cancelar");
-        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCancelarActionPerformed(evt);
-            }
-        });
-
-        jLabel5.setText("Detalle y cambio de estado de almacén");
-
-        jLabel1.setText("Fecha de Creación:");
-
-        jTextFieldUsuarioModAlm.setEditable(false);
-
-        jTextField2.setEditable(false);
-        jTextField2.setText("Nombre de la empresa");
-
-        jTextFieldAlmaceSelec.setEditable(false);
-
-        jTextFieldFechaCreaAlmac.setEditable(false);
-
-        jTextFieldModificaFechaAlmac.setEditable(false);
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel_UsuarioModificado)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel_UltimaVezModificado)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldModificaFechaAlmac, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel_FechadeCreacio)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldFechaCreaAlmac, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel_Estado)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBoxEstadoAlmacen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel_Almacen)
+                            .addGap(2, 2, 2)
+                            .addComponent(jTextFieldAlmaceSelec))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel_Empresa)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jTextField_NombreDeLaEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField_NombreDeLaEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel_Empresa))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldAlmaceSelec, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel_Almacen))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(181, 465, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextField_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel_UsuarioModificado)
+                            .addComponent(jLabel_UltimaVezModificado)
+                            .addComponent(jTextFieldModificaFechaAlmac, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel_FechadeCreacio)
+                            .addComponent(jTextFieldFechaCreaAlmac, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel_Estado)
+                            .addComponent(jComboBoxEstadoAlmacen, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextFieldAlmaceSelec, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel5)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel10)
-                                    .addComponent(jLabel11)
-                                    .addComponent(jLabel12))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(3, 3, 3)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextFieldFechaCreaAlmac, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jTextFieldUsuarioModAlm, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jTextFieldModificaFechaAlmac, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jComboBoxEstadoAlmacen, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(23, 23, 23))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(74, 74, 74)
-                .addComponent(jButtonAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
-                .addComponent(jButtonCancelar)
-                .addGap(68, 68, 68))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel5)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jTextFieldAlmaceSelec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextFieldFechaCreaAlmac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(jTextFieldUsuarioModAlm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(jTextFieldModificaFechaAlmac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(jComboBoxEstadoAlmacen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonAceptar)
-                    .addComponent(jButtonCancelar))
-                .addGap(32, 32, 32))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -285,6 +333,10 @@ public class DetalleAlmacenDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
         this.dispose(); // Descarta cambios sin actualizar la BD
     }//GEN-LAST:event_jButtonCancelarActionPerformed
+
+    private void jTextField_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_UsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_UsuarioActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -329,17 +381,18 @@ public class DetalleAlmacenDialog extends javax.swing.JDialog {
     private javax.swing.JButton jButtonAceptar;
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JComboBox<String> jComboBoxEstadoAlmacen;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel jLabel_Almacen;
+    private javax.swing.JLabel jLabel_Empresa;
+    private javax.swing.JLabel jLabel_Estado;
+    private javax.swing.JLabel jLabel_FechadeCreacio;
+    private javax.swing.JLabel jLabel_UltimaVezModificado;
+    private javax.swing.JLabel jLabel_UsuarioModificado;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextFieldAlmaceSelec;
     private javax.swing.JTextField jTextFieldFechaCreaAlmac;
     private javax.swing.JTextField jTextFieldModificaFechaAlmac;
-    private javax.swing.JTextField jTextFieldUsuarioModAlm;
+    private javax.swing.JTextField jTextField_NombreDeLaEmpresa;
+    private javax.swing.JTextField jTextField_Usuario;
     // End of variables declaration//GEN-END:variables
 }
